@@ -1,4 +1,5 @@
-@extends('Layouts.main')
+@extends('Admin.master')
+@section('menu_home', 'active')
 @section('Content')
 <div class="main-body">
     <div class="page-wrapper">
