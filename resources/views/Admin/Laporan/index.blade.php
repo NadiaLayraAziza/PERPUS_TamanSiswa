@@ -23,13 +23,13 @@
                             <div class="card-block" style="text-align: center">
                                 <div class="row">
                                     <div class="col-4 cst-cont">
-                                        <a href="{{ route('buku.create') }}" class="btn btn-primary" style="margin-bottom: 5px">Cetak Data Anggota</a>
+                                        <a href="{{ route('laporan.anggota') }}" class="btn btn-primary" style="margin-bottom: 5px">Cetak Data Anggota</a>
                                     </div>
                                     <div class="col-4 cst-cont">
-                                        <a href="{{ route('buku.create') }}" class="btn btn-danger" style="margin-bottom: 5px">Cetak Data Buku</a>
+                                        <a href="{{ route('laporan.buku') }}" class="btn btn-danger" style="margin-bottom: 5px">Cetak Data Buku</a>
                                     </div>
                                     <div class="col-4 cst-cont">
-                                        <a href="{{ route('buku.create') }}" class="btn btn-success" style="margin-bottom: 5px">Cetak Data Peminjaman</a>
+                                        <a href="{{ route('laporan.transaksi') }}" class="btn btn-success" style="margin-bottom: 5px">Cetak Data Peminjaman</a>
                                     </div>
                                 </div>
                             </div>

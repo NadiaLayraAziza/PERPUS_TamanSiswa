@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Transaksi;
 use Illuminate\Http\Request;
 
 class TransaksiController extends Controller
@@ -13,7 +14,8 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        //
+        $posts= Transaksi::orderBy('id','asc')->paginate(5);
+        return view('Admin.Transaksi.index',compact('posts'))->with('i',(request()->input('posts',1)-1)*5);
     }
 
     /**
@@ -43,9 +45,10 @@ class TransaksiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($nim)
     {
-        //
+        $transaksi = Transaksi::where('nim', $nim)->first();
+        return view('siswa.riwayat', compact('transaksi'));
     }
 
     /**
