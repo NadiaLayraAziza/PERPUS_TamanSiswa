@@ -37,7 +37,7 @@
 
                 <li class="user-profile header-notification">
                     <a href="#!" class="waves-effect waves-light">
-                        <img src="{{ asset('assets/images/logo-smk.png')}}" class="img-radius" alt="User-Profile-Image">
+                        <img src="{{ asset('assets/images/foto.jpg')}}" class="img-radius" alt="User-Profile-Image">
                         <span>Admin</span>
                         <i class="ti-angle-down"></i>
                     </a>

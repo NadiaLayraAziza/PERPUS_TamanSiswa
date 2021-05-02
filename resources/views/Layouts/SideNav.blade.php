@@ -23,7 +23,7 @@
                     <span class="pcoded-mcaret"></span>
                 </a>
             </li>
-            <li cclass="active">
+            <li class="@yield('menu_anggota')">
                 <a href="{{url('anggota')}}" class="waves-effect waves-dark">
                     <span class="pcoded-micon"><i class="ti-user"></i><b>C</b></span>
                     <span class="pcoded-mtext">Data Anggota</span>
@@ -52,5 +52,4 @@
                 </a>
             </li>
         </ul>
-
 </nav>

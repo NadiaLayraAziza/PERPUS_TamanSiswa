@@ -1,5 +1,5 @@
 @extends('Admin.master')
-@section('menu_anggota', 'active')
+@section('menu_buku', 'active')
 @section('Content')
 
     <div class="pcoded-inner-content">
@@ -34,6 +34,12 @@
                                             <label class="col-sm-2 col-form-label">Penerbit</label>
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control" name="penerbit">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Cover Buku</label>
+                                            <div class="col-sm-10">
+                                                <input type="file" class="form-control" name="image">
                                             </div>
                                         </div>
                                         <div class="form-group row">

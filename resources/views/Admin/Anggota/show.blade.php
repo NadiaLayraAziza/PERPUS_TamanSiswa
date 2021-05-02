@@ -1,4 +1,5 @@
 @extends('Admin.master')
+@section('menu_anggota', 'active')
 @section('Content')
 <div class="main-body">
   <div class="page-wrapper">
@@ -25,7 +26,7 @@
                             <table style="width:100%">
                               <tr>
                                 <td rowspan="9" align="center" style="padding: right 0;">
-                                  <img src="{{ asset('assets/images/logo-smk.png')}}" style="width: 175px;"></td>
+                                  <img src="{{ asset('assets/images/foto.jpg')}}" style="width: 175px;"></td>
                                 <th style="padding-top: 25px">NIS</th>
                                 <td style="padding-top: 25px">:</td>
                                 <td style="padding-top: 25px ;padding-right:250px">{{$anggota->nis}}</td>

@@ -1,4 +1,5 @@
 @extends('Admin.master')
+@section('menu_buku', 'active')
 @section('Content')
 <div class="main-body">
   <div class="page-wrapper">

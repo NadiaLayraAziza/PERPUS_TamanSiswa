@@ -1,5 +1,5 @@
-@extends('Admin.master')
-@section('menu_transaksi', 'active')
+@extends('Siswa.SiswaMaster')
+@section('menu_profil', 'active')
 @section('Content')
 <div class="main-body">
   <div class="page-wrapper">
@@ -26,38 +26,38 @@
                             <table style="width:100%">
                               <tr>
                                 <td rowspan="9" align="center" style="padding: right 0;">
-                                  <img src="{{ asset('assets/images/logo-smk.png')}}" style="width: 175px;"></td>
+                                  <img src="{{ asset('assets/images/foto.jpg')}}" style="width: 175px;"></td>
                                 <th style="padding-top: 25px">NIS</th>
                                 <td style="padding-top: 25px">:</td>
-                                <td style="padding-top: 25px ;padding-right:250px">{{$anggota->nis}}</td>
+                                <td style="padding-top: 25px ;padding-right:250px">{{$siswa->nis}}</td>
                               </tr>
                               <tr>
                                 <th>Nama</th>
                                 <td>:</td>
-                                <td>{{$anggota->nama}}</td>
+                                <td>{{$siswa->nama}}</td>
                               </tr>
                               <tr>
                                   <th>Tempat Lahir</th>
                                   <td>:</td>
-                                  <td>{{$anggota->tempat_lahir}}</td>
+                                  <td>{{$siswa->tempat_lahir}}</td>
                                 </tr>
                               <tr>
                                 <th>Tanggal Lahir</th>
                                 <td>:</td>
-                                <td>{{$anggota->tanggal_lahir}}</td>
+                                <td>{{$siswa->tanggal_lahir}}</td>
                               </tr>
                               <tr>
                                 <th>Jenis Kelamin</th>
                                 <td>:</td>
-                                <td>{{$anggota->jk}}</td>
+                                <td>{{$siswa->jk}}</td>
                               </tr>
                               <tr>
                                   <th>Jurusan</th>
                                   <td>:</td>
-                                  <td>{{$anggota->jurusan}}</td>
+                                  <td>{{$siswa->jurusan}}</td>
                               </tr>
                               <tr>
-                                <th><button onclick="goBack()" class="btn btn-primary" style="margin-top: 25px">Kembali</button></th>
+                                <th><a class="btn btn-primary" style="margin-top: 25px" href="{{ route('siswa.edit',$siswa->nis) }}">Edit Profil</a></th>
                             </tr>
                             </table>
                           </div>

@@ -1,5 +1,5 @@
-@extends('Admin.master')
-@section('menu_transaksi', 'active')
+@extends('Siswa.SiswaMaster')
+@section('menu_profil', 'active')
 @section('Content')
 
     <div class="pcoded-inner-content">
@@ -14,45 +14,45 @@
                             <!-- Basic Form Inputs card start -->
                             <div class="card">
                                 <div class="card-header">
-                                    <h5>Ubah Data Anggota</h5>
+                                    <h5>Ubah Profil</h5>
                                 </div>
                                 <div class="card-block">
 
-                                    <form method="POST" action="{{ route('anggota.update', $anggota->nis) }}" id="myForm" enctype="multipart/form-data">
+                                    <form method="POST" action="{{ route('anggota.update', $siswa->nis) }}" id="myForm" enctype="multipart/form-data">
                                         @csrf
                                         @method('PUT')
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Nis</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="nis" value="{{ $anggota->nis }}" disabled>
+                                                <input type="text" class="form-control" name="nis" value="{{ $siswa->nis }}" disabled>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Nama Siswa</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="nama" value="{{ $anggota->nama }}">
+                                                <input type="text" class="form-control" name="nama" value="{{ $siswa->nama }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Tempat Lahir</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="tempat_lahir" value="{{ $anggota->tempat_lahir }}">
+                                                <input type="text" class="form-control" name="tempat_lahir" value="{{ $siswa->tempat_lahir }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Tanggal Lahir</label>
                                             <div class="col-sm-10">
-                                                <input type="date" class="form-control" name="tanggal_lahir" value="{{ $anggota->tanggal_lahir }}">
+                                                <input type="date" class="form-control" name="tanggal_lahir" value="{{ $siswa->tanggal_lahir }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">Jenis Kelamin</label>
                                             <div class="col-sm-10">
                                                 <label class="checkbox-inline">
-                                                    <input type="checkbox" value="Laki-laki" name="jk" <?php if ($anggota->jk =='Laki-laki') {echo "selected";}?> /> Laki-laki
+                                                    <input type="checkbox" value="Laki-laki" name="jk" <?php if ($siswa->jk =='Laki-laki') {echo "selected";}?> /> Laki-laki
                                                 </label>
                                                 <label class="checkbox-inline">
-                                                    <input type="checkbox" value="Perempuan" name="jk" <?php if ($anggota->jk =='Perempuan') {echo "selected";}?> /> Perempuan
+                                                    <input type="checkbox" value="Perempuan" name="jk" <?php if ($siswa->jk =='Perempuan') {echo "selected";}?> /> Perempuan
                                                 </label>
                                             </div>
                                         </div>
@@ -60,19 +60,19 @@
                                             <label class="col-sm-2 col-form-label" >Jurusan</label>
                                             <div class="col-sm-10">
                                                 <select class="form-control" name="jurusan">
-                                                    <option value="Teknik Elektro" <?php if ($anggota->jurusan =='Teknik Elektro') {
+                                                    <option value="Teknik Elektro" <?php if ($siswa->jurusan =='Teknik Elektro') {
                                                         echo "selected";} ?>>Teknik Elektro</option>
-                                                    <option value="Teknik Mesin" <?php if ($anggota->jurusan =='Teknik Mesin') {
+                                                    <option value="Teknik Mesin" <?php if ($siswa->jurusan =='Teknik Mesin') {
                                                         echo "selected";} ?>>Teknik Mesin</option>
-                                                    <option value="Teknologi Informasi" <?php if ($anggota->jurusan =='Teknologi Informasi') {
+                                                    <option value="Teknologi Informasi" <?php if ($siswa->jurusan =='Teknologi Informasi') {
                                                         echo "selected";} ?>>Teknologi Informasi</option>
-                                                    <option value="Teknik Sipil" <?php if ($anggota->jurusan =='Teknik Sipil') {
+                                                    <option value="Teknik Sipil" <?php if ($siswa->jurusan =='Teknik Sipil') {
                                                         echo "selected";} ?>>Teknik Sipil</option>
-                                                    <option value="Teknik Kimia" <?php if ($anggota->jurusan =='Teknik Kimia') {
+                                                    <option value="Teknik Kimia" <?php if ($siswa->jurusan =='Teknik Kimia') {
                                                         echo "selected";} ?>>Teknik Kimia</option>
-                                                    <option value="Akuntansi" <?php if ($anggota->jurusan =='Akuntansi') {
+                                                    <option value="Akuntansi" <?php if ($siswa->jurusan =='Akuntansi') {
                                                         echo "selected";} ?>>Akuntansi</option>
-                                                    <option value="Administrasi Niaga" <?php if ($anggota->jurusan =='Administrasi Niaga') {
+                                                    <option value="Administrasi Niaga" <?php if ($siswa->jurusan =='Administrasi Niaga') {
                                                         echo "selected";} ?>>Administrasi Niaga</option>
                                                 </select>
                                             </div>
@@ -106,7 +106,5 @@
           window.history.back();
         }
     </script>
-
-
 
 @endsection

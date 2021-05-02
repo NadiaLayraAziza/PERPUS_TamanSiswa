@@ -1,5 +1,5 @@
 @extends('Admin.master')
-@section('menu_anggota', 'active')
+@section('menu_buku', 'active')
 @section('Content')
 
     <div class="pcoded-inner-content">
