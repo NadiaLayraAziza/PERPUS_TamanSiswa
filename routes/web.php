@@ -32,7 +32,6 @@ Route::resource('anggota', AnggotaController::class);
 // Route::get('/cari', [AnggotaController::class,'cari'])->name('Anggota.cari');;
 Route::resource('buku', BukuController::class);
 Route::resource('transaksi', TransaksiController::class);
-Route::resource('admin', AdminController::class);
 Route::prefix('siswa')->group(function () {
     Route::get('/{nis}', [SiswaController::class,'index'])->name('siswa.index');
     Route::get('/edit/{nis}', [SiswaController::class,'edit'])->name('siswa.edit');

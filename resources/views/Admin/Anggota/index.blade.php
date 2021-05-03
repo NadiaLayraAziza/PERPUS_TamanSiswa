@@ -24,6 +24,13 @@
                                 <div class="row">
                                     <div class="col-3 cst-cont">
                                         <a href="{{ route('anggota.create') }}" class="btn btn-success" style="margin-bottom: 5px">Tambah Data</a>
+                                        @if ($message = Session::get('success'))
+                                            <div class="card bg-c-green total-card">
+                                                <div class="text-left">
+                                                    <h4>{{ $message }}</h4>
+                                                </div>
+                                            </div>
+                                        @endif
                                     </div>
                                     <div class="col-9 cst-cont">
                                         <form action="{{ route('anggota.index') }}" method="GET">
@@ -37,14 +44,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            @if ($message = Session::get('success'))
-                                <div class="card bg-c-green total-card">
-                                    <div class="text-left">
-                                        <h4>{{ $message }}</h4>
-                                    </div>
-                                </div>
-                            @endif
 
                             <div class="card-block">
                                 <table class="table table-hover m-b-0 without-header">

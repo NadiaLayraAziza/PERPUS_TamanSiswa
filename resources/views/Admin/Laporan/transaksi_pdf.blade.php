@@ -32,7 +32,7 @@
 				<td>
 				<center>
 					<font size="4">PERPUSTAKAAN</font><br>
-					<font size="5"><b>SMK NEGERI 2 SUKOREJO </b></font><br>
+					<font size="5"><b>SMK TAMANSISWA MOJOAGUNG </b></font><br>
 					<font size="2"></font><br>
 					<font size="2"><i>Jln Cut Nya'Dien No. 02 Kode Pos : 68173 Telp./Fax (0331)758005 Tempurejo Jember Jawa Timur</i></font>
 				</center>
