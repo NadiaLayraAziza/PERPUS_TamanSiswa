@@ -11,7 +11,7 @@ class Anggota extends Model
 
     protected $table='tb_anggota';
     protected $primaryKey = 'nis';
-    protected $keyType = 'string';
+    // protected $keyType = 'string';
 
     protected $fillable=[
         'nis',
@@ -19,6 +19,6 @@ class Anggota extends Model
         'tempat_lahir',
         'tanggal_lahir',
         'jk',
-        'jurusan'
+        'jurusan',
     ];
 }

@@ -50,3 +50,7 @@ Route::prefix('laporan')->group(function () {
     Route::get('/cetak_anggota', [LaporanController::class,'cetak_anggota'])->name('laporan.anggota');
     Route::get('/cetak_transaksi', [LaporanController::class,'cetak_transaksi'])->name('laporan.transaksi');
 });
+
+Route::get('/tambah', function () {
+    return view('Admin.Anggota.tes');
+});
