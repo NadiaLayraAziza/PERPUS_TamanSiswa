@@ -31,7 +31,8 @@ class AnggotaController extends Controller
         }
 
         $datas = Anggota::get();
-        return view('anggota.index', compact('datas'));
+        // return view('anggota.index', compact('datas'));
+        return view('Baru.Admin.Anggota.tb-anggota', compact('datas'));
     }
 
     /**
@@ -51,7 +52,7 @@ class AnggotaController extends Controller
                         ->from('anggota')
                         ->whereRaw('anggota.user_id = users.id');
                      })->get();
-        return view('anggota.create', compact('users'));
+        return view('Baru.Admin.Anggota.create', compact('users'));
     }
 
     /**
@@ -72,7 +73,8 @@ class AnggotaController extends Controller
 
         $this->validate($request, [
             'nama' => 'required|string|max:255',
-            'nisn' => 'required|string|max:20|unique:anggota'
+            'nisn' => 'required|string|max:20|unique:anggota',
+            'tempat_lahir' => 'required|string|max:255',
         ]);
 
         Anggota::create($request->all());

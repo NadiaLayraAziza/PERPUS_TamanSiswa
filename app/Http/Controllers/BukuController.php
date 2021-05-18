@@ -30,7 +30,7 @@ class BukuController extends Controller
         }
 
         $datas = Buku::get();
-        return view('buku.index', compact('datas'));
+        return view('Baru.Admin.Buku.tb-buku', compact('datas'));
     }
 
     /**
@@ -45,7 +45,7 @@ class BukuController extends Controller
             return redirect()->to('/');
         }
 
-        return view('buku.create');
+        return view('Baru.Admin.Buku.create');
     }
 
     /**
