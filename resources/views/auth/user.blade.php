@@ -55,13 +55,10 @@
                         <tr>
                           <td class="py-1">
                           @if($data->gambar)
-                            <img src="{{url('images/user', $data->gambar)}}" alt="image" style="margin-right: 10px;" />
+                            <img width="30" height="30" src="{{url('images/user', $data->gambar)}}" alt="image" />
                           @else
-                            <img src="{{url('images/user/default.png')}}" alt="image" style="margin-right: 10px;" />
-
+                            <img width="30" height="30" src="{{url('images/user/default.png')}}" alt="image" />
                           @endif
-
-
                             {{$data->name}}
                           </td>
                           <td>

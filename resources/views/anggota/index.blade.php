@@ -70,18 +70,15 @@
                                         @foreach ($datas as $data)
 
                                         <tr>
-                                            <td class="py-1">
+                                            <td>
                                                 @if($data->user->gambar)
-                                                  <img src="{{url('images/user', $data->user->gambar)}}" alt="image" style="margin-right: 10px;" />
+                                                  <img width="30" height="30" class="img-radius" src="{{url('images/user', $data->user->gambar)}}" alt="image"  />
                                                 @else
-                                                  <img src="{{url('images/user/default.png')}}" alt="image" style="margin-right: 10px;" />
+                                                  <img width="30" height="30" class="img-radius" src="{{url('images/user/default.png')}}" alt="image"  />
                                                 @endif
-
                                                 {{$data->nama}}
                                             </td>
-                                            <td>
-                                                <a href="{{route('anggota.show', $data->id)}}">{{$data->npm}}</a>
-                                            </td>
+                                            <td> {{$data->nisn}} </td>
                                             <td>
                                                 @if($data->prodi == 'TI')
                                                   Teknik Informatika

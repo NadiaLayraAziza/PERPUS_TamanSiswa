@@ -111,7 +111,7 @@
                         {{--  Page-header end  --}}
                         <div class="pcoded-inner-content">
                             {{--  Start Content   --}}
-                            @yield('Content')
+                            @yield('content')
                             {{-- End Content --}}
                         </div>
                     </div>

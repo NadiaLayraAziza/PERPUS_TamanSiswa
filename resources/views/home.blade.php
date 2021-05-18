@@ -17,7 +17,7 @@
                 <div class="card-body">
                   <div class="clearfix">
                     <div class="float-left">
-                      <i class="mdi mdi-poll-box text-danger icon-lg"></i>
+                        <i class="fa fa-edit fa-3x"></i>
                     </div>
                     <div class="float-right">
                       <p class="mb-0 text-right">Transaksi</p>
@@ -27,7 +27,7 @@
                     </div>
                   </div>
                   <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> Total seluruh transaksi
+                    <i class="fa fa-edit" aria-hidden="true"></i> Total seluruh transaksi
                   </p>
                 </div>
               </div>
@@ -37,7 +37,7 @@
                 <div class="card-body">
                   <div class="clearfix">
                     <div class="float-left">
-                      <i class="mdi mdi-receipt text-warning icon-lg"></i>
+                        <i class="fas fa-calendar-alt fa-3x"></i>
                     </div>
                     <div class="float-right">
                       <p class="mb-0 text-right">Sedang Pinjam</p>
@@ -47,7 +47,7 @@
                     </div>
                   </div>
                   <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-calendar mr-1" aria-hidden="true"></i> sedang dipinjam
+                    <i class="fas fa-calendar-alt" aria-hidden="true"></i> sedang dipinjam
                   </p>
                 </div>
               </div>
@@ -57,7 +57,7 @@
                 <div class="card-body">
                   <div class="clearfix">
                     <div class="float-left">
-                      <i class="mdi mdi-book text-success icon-lg" style="width: 40px;height: 40px;"></i>
+                        <i class="fas fa-book fa-3x" style="width: 40px;height: 40px; "></i>
                     </div>
                     <div class="float-right">
                       <p class="mb-0 text-right">Buku</p>
@@ -67,7 +67,7 @@
                     </div>
                   </div>
                   <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-book mr-1" aria-hidden="true"></i> Total judul buku
+                    <i class="fas fa-book" aria-hidden="true"></i> Total judul buku
                   </p>
                 </div>
               </div>
@@ -77,7 +77,7 @@
                 <div class="card-body">
                   <div class="clearfix">
                     <div class="float-left">
-                      <i class="mdi mdi-account-location text-info icon-lg"></i>
+                        <i class="fas fa-users fa-3x"></i>
                     </div>
                     <div class="float-right">
                       <p class="mb-0 text-right">Anggota</p>
@@ -87,7 +87,7 @@
                     </div>
                   </div>
                   <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-account mr-1" aria-hidden="true"></i> Total seluruh anggota
+                    <i class="fas fa-users" aria-hidden="true"></i> Total seluruh anggota
                   </p>
                 </div>
               </div>
@@ -98,7 +98,18 @@
               <div class="card">
 
                 <div class="card-body">
-                  <h4 class="card-title">Data Transaksi sedang pinjam</h4>
+                    <div class="card-header">
+                        <h5 style="color: white">Data Transaksi sedang pinjam</h5>
+                        <div class="card-header-right">
+                            <ul class="list-unstyled card-option">
+                                <li><i class="fa fa fa-wrench open-card-option"></i></li>
+                                <li><i class="fa fa-window-maximize full-card"></i></li>
+                                <li><i class="fa fa-minus minimize-card"></i></li>
+                                <li><i class="fa fa-refresh reload-card"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                  {{--  <h4 class="card-title">Data Transaksi sedang pinjam</h4>  --}}
 
                   <div class="table-responsive">
                     <table class="table table-striped" id="table">

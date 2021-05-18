@@ -20,19 +20,19 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
         body {
-          background-image: url('../img/bg.png');
+          background-image: url('../images/bg.PNG');
           background-repeat: no-repeat;
           background-attachment: fixed;
           background-size: 100% 100%;
         }
         </style>
 </head>
-<body background="">
+<body style="background-image: bg.png">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    SISTEM INFORMASI PERPUSTAKAAN
+                <a class="navbar-brand" href="{{ url('/') }}" style="padding-left: 350px">
+                     SISTEM INFORMASI PERPUSTAKAAN
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>

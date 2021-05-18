@@ -58,6 +58,16 @@
             </li>
         </ul>
         <ul class="pcoded-item pcoded-left-item">
+            <li class="">
+                {{--  nav-item {{ (['anggota']) }}  --}}
+                <a href="{{url('user')}}" class="waves-effect waves-dark">
+                    <span class="pcoded-micon"><i class="ti-user"></i><b>C</b></span>
+                    <span class="pcoded-mtext">Data User</span>
+                    <span class="pcoded-mcaret"></span>
+                </a>
+            </li>
+        </ul>
+        <ul class="pcoded-item pcoded-left-item">
             <li class="pcoded-hasmenu ">
                 <a href="#ui-laporan" class="waves-effect waves-dark">
                     <span class="pcoded-micon"><i class="ti-receipt"></i><b>A</b></span>

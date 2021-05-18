@@ -11,7 +11,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
-class SiswaController extends Controller
+class UserController extends Controller
 {
     public function __construct()
     {
