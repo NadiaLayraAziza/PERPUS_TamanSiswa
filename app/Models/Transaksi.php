@@ -9,5 +9,23 @@ class Transaksi extends Model
 {
     use HasFactory;
 
-    protected $table='tb_transaksi';
+    protected $table = 'transaksi';
+    protected $fillable = [
+        'kode_transaksi',
+        'anggota_id',
+        'buku_id',
+        'tgl_pinjam',
+        'tgl_kembali',
+        'status',
+        'ket'];
+
+    public function anggota()
+    {
+    	return $this->belongsTo(Anggota::class);
+    }
+
+    public function buku()
+    {
+    	return $this->belongsTo(Buku::class);
+    }
 }

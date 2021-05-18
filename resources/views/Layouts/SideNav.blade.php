@@ -15,41 +15,78 @@
             <form class="form-material">
 
         <div class="pcoded-navigation-label">Halaman Admin</div>
+        @if(Auth::user()->level == 'admin')
         <ul class="pcoded-item pcoded-left-item">
-            <li class="@yield('menu_home')">
-                <a href="http://127.0.0.1:8000" class="waves-effect waves-dark">
+            <li class="">
+                {{--  nav-item {{ (['/', 'home']) }}  --}}
+                <a href="{{url('/')}}" class="waves-effect waves-dark">
                     <span class="pcoded-micon"><i class="ti-home"></i><b>C</b></span>
                     <span class="pcoded-mtext">Dashboard</span>
                     <span class="pcoded-mcaret"></span>
                 </a>
             </li>
-            <li class="@yield('menu_anggota')">
+        </ul>
+        <ul class="pcoded-item pcoded-left-item">
+            <li class="">
+                {{--  nav-item {{ (['anggota']) }}  --}}
                 <a href="{{url('anggota')}}" class="waves-effect waves-dark">
                     <span class="pcoded-micon"><i class="ti-user"></i><b>C</b></span>
                     <span class="pcoded-mtext">Data Anggota</span>
                     <span class="pcoded-mcaret"></span>
                 </a>
             </li>
-            <li class="@yield('menu_buku')">
+        </ul>
+        <ul class="pcoded-item pcoded-left-item">
+            <li class="">
+                {{--  nav-item {{ (['buku']) }}  --}}
                 <a href="{{url('buku')}}" class="waves-effect waves-dark">
                     <span class="pcoded-micon"><i class="ti-book"></i><b>M</b></span>
                     <span class="pcoded-mtext">Data Buku</span>
                     <span class="pcoded-mcaret"></span>
                 </a>
             </li>
-            <li class="@yield('menu_transaksi')">
+        </ul>
+        @endif
+        <ul class="pcoded-item pcoded-left-item">
+            <li class="">
+                {{--  nav-item {{ (['transaksi']) }}  --}}
                 <a href="{{url('transaksi')}}" class="waves-effect waves-dark">
                     <span class="pcoded-micon"><i class="ti-receipt"></i><b>M</b></span>
                     <span class="pcoded-mtext">Data Peminjaman</span>
                     <span class="pcoded-mcaret"></span>
                 </a>
             </li>
-            <li class="@yield('menu_laporan')">
-                <a href="{{url('laporan')}}" class="waves-effect waves-dark">
-                    <span class="pcoded-micon"><i class="ti-layout"></i><b>M</b></span>
+        </ul>
+        <ul class="pcoded-item pcoded-left-item">
+            <li class="pcoded-hasmenu ">
+                <a href="#ui-laporan" class="waves-effect waves-dark">
+                    <span class="pcoded-micon"><i class="ti-receipt"></i><b>A</b></span>
                     <span class="pcoded-mtext">Laporan</span>
                     <span class="pcoded-mcaret"></span>
                 </a>
+                <ul class="pcoded-submenu">
+                    <li class="">
+                        <a  href="{{url('laporan/trs')}}" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                            <span class="pcoded-mtext">Laporan Transaksi</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="{{url('laporan/buku')}}" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                            <span class="pcoded-mtext">Laporan Buku</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                    {{--  <li class="">
+                        <a href="sample-page.html" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-layout-sidebar-left"></i><b>S</b></span>
+                            <span class="pcoded-mtext">Sample Page</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>  --}}
+                </ul>
             </li>
         </ul>
 </nav>

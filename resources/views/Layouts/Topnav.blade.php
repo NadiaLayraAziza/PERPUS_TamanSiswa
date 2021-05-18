@@ -37,19 +37,27 @@
 
                 <li class="user-profile header-notification">
                     <a href="#!" class="waves-effect waves-light">
-                        <img src="{{ asset('assets/images/foto.jpg')}}" class="img-radius" alt="User-Profile-Image">
-                        <span>Admin</span>
+                        <span class="profile-text">Hello, {{Auth::user()->name}} !</span>
+                        @if(Auth::user()->gambar == '')
+                        <img class="img-radius" src="{{asset('images/user/default.png')}}" alt="User-Profile-Image">
+                        @else
+                        <img class="img-radius" src="{{asset('images/user/'.Auth::user()->gambar)}}" alt="User-Profile-Image">
+                        @endif
                         <i class="ti-angle-down"></i>
                     </a>
                     <ul class="show-notification profile-notification">
                         <li class="waves-effect waves-light">
-                            <a href="#!">
-                                <i class="ti-settings"></i> Settings
+                            <a href="{{route('user.edit', Auth::user()->id)}}">
+                                <i class="ti-settings"></i> Settings Profile
                             </a>
                         </li>
                         <li class="waves-effect waves-light">
-                            <a href="auth-normal-sign-in.html">
+                            <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
                                 <i class="ti-layout-sidebar-left"></i> Logout
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
                             </a>
                         </li>
                     </ul>

@@ -1,10 +1,12 @@
 <?php
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\KatalogController;
 use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\BukuController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LaporanController;
-use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -20,37 +22,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('Admin.dashboard');
-});
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class,'index'])->name('home');
+Route::get('/', [HomeController::class,'index']);
+
+Route::resource('user', UserController::class);
 
 Route::resource('anggota', AnggotaController::class);
-// Route::get('/cari', [AnggotaController::class,'cari'])->name('Anggota.cari');;
+
 Route::resource('buku', BukuController::class);
+Route::get('/format_buku', [BukuController::class,'format']);
+Route::post('/import_buku', [BukuController::class,'import']);
+
 Route::resource('transaksi', TransaksiController::class);
-Route::prefix('siswa')->group(function () {
-    Route::get('/{nis}', [SiswaController::class,'index'])->name('siswa.index');
-    Route::get('/edit/{nis}', [SiswaController::class,'edit'])->name('siswa.edit');
-    Route::put('/edit/{nis}', [SiswaController::class,'update'])->name('siswa.update');
-    Route::get('/{nis}/riwayat', [SiswaController::class,'show'])->name('siswa.show');
-    Route::get('/{nis}/katalog', [SiswaController::class, 'katalog'])->name('siswa.katalog');
-});
-// Route::get('/katalog', [KatalogController::class,'katalog']);
+Route::get('/laporan/trs', [LaporanController::class,'transaksi']);
+Route::get('/laporan/trs/pdf', [LaporanController::class,'transaksiPdf']);
+Route::get('/laporan/trs/excel', [LaporanController::class,'transaksiExcel']);
 
-Route::prefix('laporan')->group(function () {
-    Route::get('/', [LaporanController::class,'index']);
-    // Route::get('/cetak_buku', function () {
-    //     return view('admin.laporan.buku_pdf');
-    // });
-    Route::get('/cetak_buku', [LaporanController::class,'cetak_buku'])->name('laporan.buku');
-    Route::get('/cetak_anggota', [LaporanController::class,'cetak_anggota'])->name('laporan.anggota');
-    Route::get('/cetak_transaksi', [LaporanController::class,'cetak_transaksi'])->name('laporan.transaksi');
-});
+Route::get('/laporan/buku', [LaporanController::class,'buku']);
+Route::get('/laporan/buku/pdf', [LaporanController::class,'bukuPdf']);
+Route::get('/laporan/buku/excel', [LaporanController::class,'bukuExcel']);
 
-Route::get('/tambah', function () {
-    return view('Admin.Anggota.tes');
-});

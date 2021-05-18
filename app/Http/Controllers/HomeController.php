@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Anggota;
+use App\Models\Buku;
+use App\Models\Transaksi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +27,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $transaksi = Transaksi::get();
+        $anggota   = Anggota::get();
+        $buku      = Buku::get();
+        if(Auth::user()->level == 'user')
+        {
+            $datas = Transaksi::where('status', 'pinjam')
+                                ->where('anggota_id', Auth::user()->anggota)
+                                ->get();
+        } else {
+            $datas = Transaksi::where('status', 'pinjam')->get();
+        }
+        return view('home', compact('transaksi', 'anggota', 'buku', 'datas'));
     }
 }

@@ -9,16 +9,30 @@ class Anggota extends Model
 {
     use HasFactory;
 
-    protected $table='tb_anggota';
-    protected $primaryKey = 'nis';
-    // protected $keyType = 'string';
-
-    protected $fillable=[
-        'nis',
+    protected $table = 'anggota';
+    protected $fillable = [
+        'user_id',
+        'nisn',
         'nama',
         'tempat_lahir',
-        'tanggal_lahir',
+        'tgl_lahir',
         'jk',
-        'jurusan',
-    ];
+        'jurusan'];
+
+        /**
+        * Method One To One
+        */
+        public function user()
+        {
+            return $this->belongsTo(User::class);
+        }
+
+        /**
+        * Method One To Many
+        */
+        public function transaksi()
+        {
+            return $this->hasMany(Transaksi::class);
+        }
+
 }

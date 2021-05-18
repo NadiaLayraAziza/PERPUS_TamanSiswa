@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Anggota;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class AnggotaController extends Controller
 {
@@ -13,22 +17,21 @@ class AnggotaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
-    {
 
-        if($request->has('search')){ // Pemilihan jika ingin melakukan pencarian
-            $posts= Anggota::where('nis', 'like', "%".$request->search."%")
-            ->orwhere('nama', 'like', "%".$request->search."%")
-            ->orwhere('tempat_lahir', 'like', "%".$request->search."%")
-            ->orwhere('tanggal_lahir', 'like', "%".$request->search."%")
-            ->orwhere('jk', 'like', "%".$request->search."%")
-            ->orwhere('jurusan', 'like', "%".$request->search."%")
-            ->paginate();
-        } else { // Pemilihan jika tidak melakukan pencarian
-            //fungsi eloquent menampilkan data menggunakan pagination
-            $posts= Anggota::paginate(5); // Pagination menampilkan 5 data
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function index()
+    {
+        if(Auth::user()->level == 'user') {
+            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+            return redirect()->to('/');
         }
-        return view('Admin.Anggota.index',compact('posts'))->with('i',(request()->input('posts',1)-1)*5);
+
+        $datas = Anggota::get();
+        return view('anggota.index', compact('datas'));
     }
 
     /**
@@ -38,7 +41,17 @@ class AnggotaController extends Controller
      */
     public function create()
     {
-        return view('Admin.Anggota.create');
+        if(Auth::user()->level == 'user') {
+            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+            return redirect()->to('/');
+        }
+
+        $users = User::WhereNotExists(function($query) {
+                        $query->select(DB::raw(1))
+                        ->from('anggota')
+                        ->whereRaw('anggota.user_id = users.id');
+                     })->get();
+        return view('anggota.create', compact('users'));
     }
 
     /**
@@ -49,19 +62,23 @@ class AnggotaController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nis'=>'required',
-            'nama'=>'required',
-            'tempat_lahir'=>'required',
-            'tanggal_lahir'=>'required',
-            'jk'=>'required',
-            'jurusan'=>'required'
-            ]);
+        $count = Anggota::where('nisn',$request->input('nisn'))->count();
 
-        //fungsieloquentuntukmenambahdata
+        if($count>0){
+            Session::flash('message', 'Already exist!');
+            Session::flash('message_type', 'danger');
+            return redirect()->to('anggota');
+        }
+
+        $this->validate($request, [
+            'nama' => 'required|string|max:255',
+            'nisn' => 'required|string|max:20|unique:anggota'
+        ]);
+
         Anggota::create($request->all());
-        //jikadataberhasilditambahkan,akankembalikehalamanutama
-        return redirect()->route('anggota.index')->with('success','Murid Berhasil Ditambahkan');
+
+        alert()->success('Berhasil.','Data telah ditambahkan!');
+        return redirect()->route('anggota.index');
 
     }
 
@@ -71,10 +88,16 @@ class AnggotaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($nis)
+    public function show($id)
     {
-        $anggota = Anggota::where('nis', $nis)->first();
-        return view('admin.anggota.show', compact('anggota'));
+        if((Auth::user()->level == 'user') && (Auth::user()->id != $id)) {
+                Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+                return redirect()->to('/');
+        }
+
+        $data = Anggota::findOrFail($id);
+
+        return view('anggota.show', compact('data'));
     }
 
     /**
@@ -83,10 +106,16 @@ class AnggotaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($nis)
+    public function edit($id)
     {
-        $anggota = Anggota::where('nis', $nis)->first();
-        return view('admin.anggota.ubah', compact('anggota'));
+        if((Auth::user()->level == 'user') && (Auth::user()->id != $id)) {
+                Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+                return redirect()->to('/');
+        }
+
+        $data = Anggota::findOrFail($id);
+        $users = User::get();
+        return view('anggota.edit', compact('data', 'users'));
     }
 
     /**
@@ -96,21 +125,12 @@ class AnggotaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $nis)
+    public function update(Request $request, $id)
     {
-        $request->validate([
-            'nis'=>'required',
-            'nama'=>'required',
-            'tempat_lahir'=>'required',
-            'tanggal_lahir'=>'required',
-            'jk'=>'required',
-            'jurusan'=>'required'
-            ]);
+        Anggota::find($id)->update($request->all());
 
-        //fungsieloquentuntukmenambahdata
-        Anggota::create($request->all());
-        //jikadataberhasilditambahkan,akankembalikehalamanutama
-        return redirect()->route('anggota.index')->with('success','Siswa Berhasil Diupdate');
+        alert()->success('Berhasil.','Data telah diubah!');
+        return redirect()->to('anggota');
     }
 
     /**
@@ -119,10 +139,10 @@ class AnggotaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($nis)
+    public function destroy($id)
     {
-        Anggota::find($nis)->delete();
-        return redirect()->route('anggota.index')
-            -> with('success', 'Siswa Berhasil Dihapus');
+        Anggota::find($id)->delete();
+        alert()->success('Berhasil.','Data telah dihapus!');
+        return redirect()->route('anggota.index');
     }
 }

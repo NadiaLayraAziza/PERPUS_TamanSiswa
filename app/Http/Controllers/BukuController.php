@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Buku;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
+use Excel;
+use Carbon\Carbon;
 
 class BukuController extends Controller
 {
@@ -12,27 +16,21 @@ class BukuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+
+    public function __construct()
     {
-        // $posts= Buku::orderBy('id','asc')->paginate(5);
-        // return view('admin.buku.index',compact('posts'))->with('i',(request()->input('posts',1)-1)*5);
+        $this->middleware('auth');
+    }
 
-        if($request->has('search')){ // Pemilihan jika ingin melakukan pencarian
-            $posts= Buku::where('judul', 'like', "%".$request->search."%")
-            ->orwhere('pengarang', 'like', "%".$request->search."%")
-            ->orwhere('penerbit', 'like', "%".$request->search."%")
-            ->orwhere('tahun_terbit', 'like', "%".$request->search."%")
-            ->orwhere('isbn', "%".$request->search."%")
-            ->orwhere('jumlah_buku', 'like', "%".$request->search."%")
-            ->orwhere('lokasi', 'like', "%".$request->search."%")
-            ->orwhere('tgl_input', 'like', "%".$request->search."%")
-            ->paginate();
-        } else { // Pemilihan jika tidak melakukan pencarian
-            //fungsi eloquent menampilkan data menggunakan pagination
-            $posts= Buku::paginate(5); // Pagination menampilkan 5 data
+    public function index()
+    {
+        if(Auth::user()->level == 'user') {
+            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+            return redirect()->to('/');
         }
-        return view('Admin.Buku.index',compact('posts'))->with('i',(request()->input('posts',1)-1)*5);
 
+        $datas = Buku::get();
+        return view('buku.index', compact('datas'));
     }
 
     /**
@@ -42,7 +40,12 @@ class BukuController extends Controller
      */
     public function create()
     {
-        return view('Admin.Buku.create');
+        if(Auth::user()->level == 'user') {
+            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+            return redirect()->to('/');
+        }
+
+        return view('buku.create');
     }
 
     /**
@@ -53,21 +56,38 @@ class BukuController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'judul'=>'required',
-            'pengarang'=>'required',
-            'penerbit'=>'required',
-            'tahun_terbit'=>'required',
-            'isbn'=>'required',
-            'jumlah_buku'=>'required',
-            'lokasi'=>'required',
-            'tgl_input'=>'required'
+        $this->validate($request, [
+            'judul' => 'required|string|max:255',
+            'isbn' => 'required|string'
+        ]);
+
+        if($request->file('cover')) {
+            $file = $request->file('cover');
+            $dt = Carbon::now();
+            $acak  = $file->getClientOriginalExtension();
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
+            $request->file('cover')->move("images/buku", $fileName);
+            $cover = $fileName;
+        } else {
+            $cover = NULL;
+        }
+
+        Buku::create([
+                'judul' => $request->get('judul'),
+                'isbn' => $request->get('isbn'),
+                'pengarang' => $request->get('pengarang'),
+                'penerbit' => $request->get('penerbit'),
+                'tahun_terbit' => $request->get('tahun_terbit'),
+                'jumlah_buku' => $request->get('jumlah_buku'),
+                'deskripsi' => $request->get('deskripsi'),
+                'lokasi' => $request->get('lokasi'),
+                'cover' => $cover
             ]);
 
-        //fungsieloquentuntukmenambahdata
-        Buku::create($request->all());
-        //jikadataberhasilditambahkan,akankembalikehalamanutama
-        return redirect()->route('buku.index')->with('success','Buku Berhasil Ditambahkan');
+        alert()->success('Berhasil.','Data telah ditambahkan!');
+
+        return redirect()->route('buku.index');
+
     }
 
     /**
@@ -78,8 +98,14 @@ class BukuController extends Controller
      */
     public function show($id)
     {
-        $buku = Buku::where('id', $id)->first();
-        return view('admin.buku.show', compact('buku'));
+        if(Auth::user()->level == 'user') {
+                Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+                return redirect()->to('/');
+        }
+
+        $data = Buku::findOrFail($id);
+
+        return view('buku.show', compact('data'));
     }
 
     /**
@@ -90,8 +116,13 @@ class BukuController extends Controller
      */
     public function edit($id)
     {
-        $Buku = Buku::where('id', $id)->first();
-        return view('Admin.buku.ubah', compact('Buku'));
+        if(Auth::user()->level == 'user') {
+                Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+                return redirect()->to('/');
+        }
+
+        $data = Buku::findOrFail($id);
+        return view('buku.edit', compact('data'));
     }
 
     /**
@@ -103,21 +134,31 @@ class BukuController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'judul'=>'required',
-            'pengarang'=>'required',
-            'penerbit'=>'required',
-            'tahun_terbit'=>'required',
-            'isbn'=>'required',
-            'jumlah_buku'=>'required',
-            'lokasi'=>'required',
-            'tgl_input'=>'required'
-            ]);
+        if($request->file('cover')) {
+            $file = $request->file('cover');
+            $dt = Carbon::now();
+            $acak  = $file->getClientOriginalExtension();
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak;
+            $request->file('cover')->move("images/buku", $fileName);
+            $cover = $fileName;
+        } else {
+            $cover = NULL;
+        }
 
-        //fungsi eloquent untuk menambah data
-        Buku::create($request->all());
-        //jikadataberhasilditambahkan,akankembalikehalamanutama
-        return redirect()->route('buku.index')->with('success','Buku Berhasil Diupdate');
+        Buku::find($id)->update([
+             'judul' => $request->get('judul'),
+                'isbn' => $request->get('isbn'),
+                'pengarang' => $request->get('pengarang'),
+                'penerbit' => $request->get('penerbit'),
+                'tahun_terbit' => $request->get('tahun_terbit'),
+                'jumlah_buku' => $request->get('jumlah_buku'),
+                'deskripsi' => $request->get('deskripsi'),
+                'lokasi' => $request->get('lokasi'),
+                'cover' => $cover
+                ]);
+
+        alert()->success('Berhasil.','Data telah diubah!');
+        return redirect()->route('buku.index');
     }
 
     /**
@@ -129,7 +170,57 @@ class BukuController extends Controller
     public function destroy($id)
     {
         Buku::find($id)->delete();
-        return redirect()->route('buku.index')
-            -> with('success', 'Buku Berhasil Dihapus');
+        alert()->success('Berhasil.','Data telah dihapus!');
+        return redirect()->route('buku.index');
+    }
+
+    public function format()
+    {
+        $data = [['judul' => null, 'isbn' => null, 'pengarang' => null, 'penerbit' => null, 'tahun_terbit' => null, 'jumlah_buku' => null, 'deskripsi' => null, 'lokasi' => 'rak1/rak2/rak3']];
+            $fileName = 'format-buku';
+
+
+        $export = Excel::create($fileName.date('Y-m-d_H-i-s'), function($excel) use($data){
+            $excel->sheet('buku', function($sheet) use($data) {
+                $sheet->fromArray($data);
+            });
+        });
+
+        return $export->download('xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        $this->validate($request, [
+            'importBuku' => 'required'
+        ]);
+
+        if ($request->hasFile('importBuku')) {
+            $path = $request->file('importBuku')->getRealPath();
+
+            $data = Excel::load($path, function($reader){})->get();
+            $a = collect($data);
+
+            if (!empty($a) && $a->count()) {
+                foreach ($a as $key => $value) {
+                    $insert[] = [
+                            'judul' => $value->judul,
+                            'isbn' => $value->isbn,
+                            'pengarang' => $value->pengarang,
+                            'penerbit' => $value->penerbit,
+                            'tahun_terbit' => $value->tahun_terbit,
+                            'jumlah_buku' => $value->jumlah_buku,
+                            'deskripsi' => $value->deskripsi,
+                            'lokasi' => $value->lokasi,
+                            'cover' => NULL];
+
+                    Buku::create($insert[$key]);
+
+                    }
+
+            };
+        }
+        alert()->success('Berhasil.','Data telah diimport!');
+        return back();
     }
 }
