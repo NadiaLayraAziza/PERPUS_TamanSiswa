@@ -26,12 +26,14 @@
                             </ol>
                         </nav>
                     </div>
+                    @if(Auth::user()->level != 'user')
                     <div class="col-md-6 col-sm-12 text-right">
                         <a href="{{ route('transaksi.create') }}" type="button" class="btn" data-bgcolor="#3b5998" data-color="#ffffff">
                             <i class="icon-copy fa fa-user-plus" aria-hidden="true"></i>
                             Tambah Data
                         </a>
                     </div>
+                    @endif
                 </div>
             </div>
 
@@ -57,7 +59,9 @@
                             {{--  <th>Durasi</th>
                             <th>Denda</th>  --}}
                             <th>Status</th>
+                            @if(Auth::user()->level != 'user')
                             <th>Action</th>
+                            @endif
                         </tr>
                     </thead>
                     <tbody id="myTable">
@@ -88,6 +92,7 @@
                                     <label class="badge badge-success">Kembali</label>
                                 @endif
                             </td>
+                            @if(Auth::user()->level != 'user')
                             <td>
                                 <form action="" method="POST">
                                     <button type="button" class="btn" data-bgcolor="#28a745" data-color="#ffffff">
@@ -105,6 +110,7 @@
                                     type="submit" class="btn btn-danger">Delete</button>
                                 </form> --}}
                             </td>
+                            @endif
                         </tr>
                         @endforeach
                     </tbody>

@@ -22,44 +22,72 @@
                         <span class="micon dw dw-house-1"></span><span class="mtext">Home</span>
                     </a>
                 </li>
+                @if(Auth::user()->level != 'user')
                 <li>
                     <div class="dropdown-divider"></div>
                 </li>
-                <li class="dropdown">
-                    <a href="javascript:;" class="dropdown-toggle">
-                        <span class="micon dw dw-edit2"></span><span class="mtext">Data Master</span>
+                <li>
+                    <a href="{{url('user')}}" class="dropdown-toggle no-arrow">
+                        <span class="micon dw dw-user-1"></span><span class="mtext">Data User</span>
                     </a>
-                    <ul class="submenu">
-                        <li>
-                            <a href="{{url('user')}}" class="dropdown-toggle no-arrow">
-                                <span class="micon dw dw-user-13" style="padding-left: 220px"></span>
-                                <span class="mtext">Data User</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{url('/buku')}}" class="dropdown-toggle no-arrow">
-                                <span class="micon dw dw-book-1" style="padding-left: 220px"></span>
-                                <span class="mtext">Data Buku</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{url('/anggota')}}" class="dropdown-toggle no-arrow">
-                                <span class="micon dw dw-user-2" style="padding-left: 220px"></span>
-                                <span class="mtext">Data Anggota</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{url('/transaksi')}}" class="dropdown-toggle no-arrow">
-                                <span class="micon dw dw-edit" style="padding-left: 220px"></span>
-                                <span class="mtext">Data Transaksi</span>
-                            </a>
-                        </li>
-                    </ul>
+                </li>
+                @endif
+                <li>
+                    <div class="dropdown-divider"></div>
+                </li>
+                <li>
+                    <a href="{{url('/buku')}}" class="dropdown-toggle no-arrow">
+                        @if(Auth::user()->level == 'user')
+                        <span class="micon dw dw-book-1"></span><span class="mtext">Katalog Buku</span>
+                        @else
+                        <span class="micon dw dw-book-1"></span><span class="mtext">Data Buku</span>
+                        @endif
+                    </a>
+                </li>
+                {{--  <li>
+                    <div class="dropdown-divider"></div>
+                </li>
+                <li>
+                    <a href="{{url('/buku')}}" class="dropdown-toggle no-arrow">
+                        <span class="micon dw dw-book-1"></span><span class="mtext">Katalog Buku</span>
+                    </a>
+                </li>  --}}
+                <li>
+                    <div class="dropdown-divider"></div>
+                </li>
+                @if(Auth::user()->level != 'user')
+                <li>
+                    <a href="{{url('/anggota')}}" class="dropdown-toggle no-arrow">
+                        <span class="micon dw dw-user-2"></span><span class="mtext">Data Anggota</span>
+                    </a>
                 </li>
                 <li>
                     <div class="dropdown-divider"></div>
                 </li>
-                <li class="dropdown">
+                @endif
+                <li>
+                    <a href="{{url('/transaksi')}}" class="dropdown-toggle no-arrow">
+                        @if(Auth::user()->level == 'user')
+                        <span class="micon dw dw-edit"></span><span class="mtext">Riwayat Peminjaman</span>
+                        @else
+                        <span class="micon dw dw-edit"></span><span class="mtext">Data Peminjaman</span>
+                        @endif
+                    </a>
+                </li>
+                <li>
+                    <div class="dropdown-divider"></div>
+                </li>
+                @if(Auth::user()->level != 'user')
+                <li>
+                    <a href="" class="dropdown-toggle no-arrow">
+                        <span class="micon dw dw-server"></span><span class="mtext">Laporan</span>
+                    </a>
+                </li>
+                <li>
+                    <div class="dropdown-divider"></div>
+                </li>
+                @endif
+                {{--  <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">
                         <span class="micon dw dw-edit2"></span><span class="mtext">Siswa</span>
                     </a>
@@ -83,7 +111,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li>  --}}
             </ul>
         </div>
     </div>

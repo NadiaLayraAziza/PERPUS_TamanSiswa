@@ -54,10 +54,10 @@
                             <th> Username </th>
                             <th> Email </th>
                             <th> Level </th>
-                            <th class="datatable-nosort">Action</th>
+                            <th>Action</th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody id="myTable">
                       @foreach($datas as $data)
                         <tr>
                           <td class="py-1">
@@ -80,19 +80,21 @@
                             {{$data->level}}
                           </td>
                           <td>
-                            <div class="dropdown">
-                                <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                                    <i class="dw dw-more"></i>
+                            <form action="{{ route('user.destroy', $data->id) }}" method="POST">
+                                <a href="{{ route('user.show', $data->id) }}" class="btn" data-bgcolor="#28a745" data-color="#ffffff">
+                                    <i class="icon-copy fa fa-info-circle" aria-hidden="true"></i>
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                    <a class="dropdown-item" href="{{route('user.show', $data->id)}}"><i class="dw dw-eye"></i> View</a>
-                                    <a class="dropdown-item" href="{{route('user.edit', $data->id)}}"><i class="dw dw-edit2"></i> Edit</a>
-                                    <form action="{{ route('user.destroy', $data->id) }}" class="pull-left"  method="post">
-                                        {{ csrf_field() }}
-                                        {{ method_field('delete') }}
-                                    <a class="dropdown-item" onclick="return confirm('Anda yakin ingin menghapus data ini?')"><i class="dw dw-delete-3"></i> Delete</a>
-                                </div>
-                            </div>
+                                <a href="{{route('user.edit', $data->id)}}" class="btn" data-bgcolor="#ffc107" data-color="#ffffff">
+                                    <i class="icon-copy fa fa-pencil-square-o" aria-hidden="true"></i>
+                                </a>
+                            @csrf
+                            @method('DELETE')
+                            <button onclick="return confirm('Anda yakin ingin meghapus data ini ?')" class="btn btn-danger" >
+                                <i class="icon-copy fa fa-trash" aria-hidden="true"></i>
+                            {{-- </button>
+                                <button onclick="return confirm('Anda yakin ingin meghapus data ini ?')"
+                                type="submit" class="btn btn-danger">Delete</button>
+                            </form> --}}
                         </td>
                           {{--  <td>
                             <div class="btn-group dropdown">

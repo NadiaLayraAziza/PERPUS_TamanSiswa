@@ -42,6 +42,7 @@ var check = function() {
 <div class="main-container">
     <div class="pd-ltr-20 xs-pd-20-10">
         <div class="min-height-200px">
+            @if(Auth::user()->level != 'user')
             <div class="page-header">
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
@@ -64,6 +65,7 @@ var check = function() {
                     </div>
                 </div>
             </div>
+            @endif
 
             <div class="card-box pd-20 height-100-p mb-30">
                 <form action="{{ route('user.update', $data->id) }}" method="post" enctype="multipart/form-data">
@@ -141,7 +143,7 @@ var check = function() {
                     <button type="submit" class="btn btn-primary" id="submit">
                                 Update
                     </button>
-                    <a href="{{route('user.index')}}" class="btn btn-secondary pull-right">Back</a>
+                    <a href="{{url('/')}}" class="btn btn-secondary pull-right">Back</a>
             </div>
         </div>
     </div>

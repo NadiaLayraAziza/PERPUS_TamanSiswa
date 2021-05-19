@@ -24,10 +24,10 @@ class BukuController extends Controller
 
     public function index()
     {
-        if(Auth::user()->level == 'user') {
-            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
-            return redirect()->to('/');
-        }
+        // if(Auth::user()->level == 'user') {
+        //     Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+        //     return redirect()->to('/');
+        // }
 
         $datas = Buku::get();
         return view('Baru.Admin.Buku.tb-buku', compact('datas'));
@@ -98,14 +98,14 @@ class BukuController extends Controller
      */
     public function show($id)
     {
-        if(Auth::user()->level == 'user') {
-                Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
-                return redirect()->to('/');
-        }
+        // if(Auth::user()->level == 'user') {
+        //         Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+        //         return redirect()->to('/');
+        // }
 
         $data = Buku::findOrFail($id);
 
-        return view('buku.show', compact('data'));
+        return view('Baru.Admin.Buku.show', compact('data'));
     }
 
     /**
@@ -122,7 +122,7 @@ class BukuController extends Controller
         }
 
         $data = Buku::findOrFail($id);
-        return view('buku.edit', compact('data'));
+        return view('Baru.Admin.Buku.edit', compact('data'));
     }
 
     /**

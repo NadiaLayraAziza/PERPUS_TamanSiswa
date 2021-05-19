@@ -26,12 +26,14 @@
                             </ol>
                         </nav>
                     </div>
+                    @if(Auth::user()->level != 'user')
                     <div class="col-md-6 col-sm-12 text-right">
                         <a href="{{ route('buku.create') }}" type="button" class="btn" data-bgcolor="#3b5998" data-color="#ffffff">
                             <i class="icon-copy fa fa-user-plus" aria-hidden="true"></i>
                             Tambah Data
                         </a>
                     </div>
+                    @endif
                 </div>
             </div>
 
@@ -76,17 +78,19 @@
                             <td>{{ $data->tahun_terbit }}</td>
                             <td>{{ $data->lokasi }}</td>
                             <td>
-                                <form action="" method="POST">
-                                    <button type="button" class="btn" data-bgcolor="#28a745" data-color="#ffffff">
+                                <form action="{{ route('buku.destroy', $data->id) }}" method="POST">
+                                    <a href="{{ route('buku.show', $data->id) }}" class="btn" data-bgcolor="#28a745" data-color="#ffffff">
                                         <i class="icon-copy fa fa-info-circle" aria-hidden="true"></i>
-                                    </button>
-                                    <button type="button" class="btn" data-bgcolor="#ffc107" data-color="#ffffff">
+                                    </a>
+                                    @if(Auth::user()->level != 'user')
+                                    <a href="{{route('buku.edit', $data->id)}}" class="btn" data-bgcolor="#ffc107" data-color="#ffffff">
                                         <i class="icon-copy fa fa-pencil-square-o" aria-hidden="true"></i>
-                                    </button>
+                                    </a>
                                 @csrf
                                 @method('DELETE')
-                                <button onclick="return confirm('Anda yakin ingin meghapus data ini ?')" type="button" class="btn btn-danger" >
+                                <button onclick="return confirm('Anda yakin ingin meghapus data ini ?')" type="submit" class="btn btn-danger" >
                                     <i class="icon-copy fa fa-trash" aria-hidden="true"></i>
+                                @endif
                                 {{-- </button>
                                     <button onclick="return confirm('Anda yakin ingin meghapus data ini ?')"
                                     type="submit" class="btn btn-danger">Delete</button>
