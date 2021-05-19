@@ -85,7 +85,7 @@
                 </li>
                 @if(Auth::user()->level != 'user')
                 <li>
-                    <a href="" class="dropdown-toggle no-arrow">
+                    <a href="{{url('/laporan')}}" class="dropdown-toggle no-arrow">
                         <span class="micon dw dw-server"></span><span class="mtext">Laporan</span>
                     </a>
                 </li>

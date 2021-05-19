@@ -38,6 +38,9 @@ Route::get('/format_buku', [BukuController::class,'format']);
 Route::post('/import_buku', [BukuController::class,'import']);
 
 Route::resource('transaksi', TransaksiController::class);
+
+Route::get('/laporan', [LaporanController::class,'index']);
+
 Route::get('/laporan/trs', [LaporanController::class,'transaksi']);
 Route::get('/laporan/trs/pdf', [LaporanController::class,'transaksiPdf']);
 Route::get('/laporan/trs/excel', [LaporanController::class,'transaksiExcel']);

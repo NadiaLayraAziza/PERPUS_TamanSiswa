@@ -162,9 +162,12 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+        //pdf
+        Barryvdh\DomPDF\ServiceProvider::class,
         //SweetAlert
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
-
+        //Excel
+        Maatwebsite\Excel\ExcelServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -231,8 +234,12 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        //pdf
+        'PDF' => Barryvdh\DomPDF\Facade::class,
         //SweetAlert
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
+        //Excel
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];

@@ -26,12 +26,28 @@
                             </ol>
                         </nav>
                     </div>
+
                     @if(Auth::user()->level != 'user')
                     <div class="col-md-6 col-sm-12 text-right">
                         <a href="{{ route('buku.create') }}" type="button" class="btn" data-bgcolor="#3b5998" data-color="#ffffff">
                             <i class="icon-copy fa fa-user-plus" aria-hidden="true"></i>
                             Tambah Data
                         </a>
+                        <div class="btn-group dropdown">
+                            <a href="#" type="button" class="btn" data-toggle="dropdown" data-bgcolor="#3b5998" data-color="#ffffff">
+                                <i class="icon-copy fa fa-download" aria-hidden="true"></i>
+                                Download Data
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{{url('laporan/buku/excel')}}">Excel</a>
+                                <a class="dropdown-item" href="{{url('laporan/buku/pdf')}}">PDF</a>
+                            </div>
+                            {{-- <button type="button" class="btn btn-light dropdown-toggle waves-effect" data-toggle="dropdown" aria-expanded="false">Import Data <span class="caret"></span> </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Dropdown link</a>
+                                <a class="dropdown-item" href="#">Dropdown link</a>
+                            </div> --}}
+                        </div>
                     </div>
                     @endif
                 </div>
@@ -46,6 +62,8 @@
                     style="background-color:cadetblue">
                 <i class="search_icon dw dw-search"></i>
             </div>
+
+
 
             <div class="card-box pd-20 height-100-p mb-30">
 				<table class="data-table table nowrap">

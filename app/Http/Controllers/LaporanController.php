@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\BukuExport;
 use App\Models\Anggota;
 use App\Models\Buku;
 use App\Models\Transaksi;
@@ -18,9 +19,14 @@ class LaporanController extends Controller
         $this->middleware('auth');
     }
 
-    public function buku()
+    public function index()
     {
         return view('laporan.buku');
+    }
+
+    public function buku()
+    {
+        return view('Baru.Admin.Laporan.buku');
     }
 
     public function bukuPdf()
@@ -86,6 +92,8 @@ class LaporanController extends Controller
     });
 
 })->export('xls');
+
+    // return Excel::download(new BukuExport, 'buku.xlsx');
 
     }
 

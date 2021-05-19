@@ -69,7 +69,7 @@
                         </div>
                         <div class="widget-data">
                             <div class="weight-600 font-18">Anggota</div>
-                            <div class="h3 mb-0">{{$transaksi->count()}}</div>
+                            <div class="h3 mb-0">{{$anggota->count()}}</div>
                         </div>
                         <p class="text-muted mt-3 mb-0">
                             <i class="fa fa-users" aria-hidden="true"></i> Total Seluruh Anggota
