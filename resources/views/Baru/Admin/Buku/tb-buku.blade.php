@@ -34,7 +34,7 @@
                             Tambah Data
                         </a>
                         <div class="btn-group dropdown">
-                            <a href="#" type="button" class="btn" data-toggle="dropdown" data-bgcolor="#3b5998" data-color="#ffffff">
+                            <a href="#" type="button" class="btn" data-toggle="dropdown" data-bgcolor="#ffc107" data-color="#ffffff">
                                 <i class="icon-copy fa fa-download" aria-hidden="true"></i>
                                 Download Data
                             </a>

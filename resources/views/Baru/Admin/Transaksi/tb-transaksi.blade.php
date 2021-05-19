@@ -32,6 +32,21 @@
                             <i class="icon-copy fa fa-user-plus" aria-hidden="true"></i>
                             Tambah Data
                         </a>
+                        <div class="btn-group dropdown">
+                            <a href="#" type="button" class="btn" data-toggle="dropdown" data-bgcolor="#ffc107" data-color="#ffffff">
+                                <i class="icon-copy fa fa-download" aria-hidden="true"></i>
+                                Download Data
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{{url('laporan/trs/excel')}}">Excel</a>
+                                <a class="dropdown-item" href="{{url('laporan/trs/pdf')}}">PDF</a>
+                            </div>
+                            {{-- <button type="button" class="btn btn-light dropdown-toggle waves-effect" data-toggle="dropdown" aria-expanded="false">Import Data <span class="caret"></span> </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Dropdown link</a>
+                                <a class="dropdown-item" href="#">Dropdown link</a>
+                            </div> --}}
+                        </div>
                     </div>
                     @endif
                 </div>
