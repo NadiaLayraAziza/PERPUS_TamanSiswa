@@ -83,7 +83,7 @@
                             @endif
                         </div>
                     </div>
-                    {{-- <div class="form-group row{{ $errors->has('level') ? ' has-error' : '' }}">
+                    {{--  <div class="form-group row{{ $errors->has('level') ? ' has-error' : '' }}">
                         <label for="level" class="col-sm-2 col-form-label">Jenis Kelamin</label>
                         <div class="col-sm-10">
                             <select class="form-control" name="jk" required="">
@@ -92,7 +92,7 @@
                                 <option value="P">Perempuan</option>
                             </select>
                         </div>
-                    </div> --}}
+                    </div>  --}}
                     <div class="form-group row{{ $errors->has('jurusan') ? ' has-error' : '' }}">
                         <label for="jurusan" class="col-sm-2 col-form-label" >Jurusan</label>
                         <div class="col-sm-10">
@@ -115,13 +115,13 @@
                         </select>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label for="user_id" class="col-sm-2 col-form-label"></label>
-                        <div class="col-sm-10">
+                    {{--  <div class="form-group row">
+                        <label for="" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-10">  --}}
                             <button type="submit" class="btn btn-primary" id="submit">Submit</button>
                             <button type="reset" class="btn btn-danger">Reset</button>
-                        </div>
-                    </div>
+                        {{--  </div>
+                    </div>  --}}
                 </form>
 			</div>
 

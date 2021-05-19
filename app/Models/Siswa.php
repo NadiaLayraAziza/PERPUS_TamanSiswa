@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Siswa extends Model
 {
     use HasFactory;
-    protected $table='tb_anggota';
+    protected $table='anggota';
     protected $primaryKey = 'nis';
 
 }

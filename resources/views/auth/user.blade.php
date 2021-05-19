@@ -8,46 +8,53 @@
 } );
 </script>
 @stop
-@extends('layouts.app')
+@extends('Baru.Admin.Admin-main')
+@section('Content')
 
-@section('content')
-<div class="row">
+<div class="main-container">
+    <div class="pd-ltr-20 xs-pd-20-10">
+        <div class="min-height-200px">
+            <div class="page-header" style="margin-top: 0px">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="title">
+                            <h4>Data Seluruh Usur</h4>
+                        </div>
+                        <nav aria-label="breadcrumb" role="navigation">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html">Data Master</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">User</li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <div class="col-md-6 col-sm-12 text-right">
+                        <a href="{{ route('user.create') }}" type="button" class="btn" data-bgcolor="#3b5998" data-color="#ffffff">
+                            <i class="icon-copy fa fa-user-plus" aria-hidden="true"></i>
+                            Tambah Data
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-  <div class="col-lg-2">
-    <a href="{{ route('user.create') }}" class="btn btn-primary btn-rounded btn-fw"><i class="fa fa-plus"></i> Tambah User</a>
-  </div>
-    <div class="col-lg-12">
-                  @if (Session::has('message'))
-                  <div class="alert alert-{{ Session::get('message_type') }}" id="waktu2" style="margin-top:10px;">{{ Session::get('message') }}</div>
-                  @endif
-                  </div>
-</div>
-<div class="row" style="margin-top: 20px;">
-<div class="col-lg-12 grid-margin stretch-card">
-              <div class="card">
+            <div class="search-icon-box card-box mb-30">
+                <input type="text"
+                    class="border-radius-5"
+                    id="myInput"
+                    placeholder="Search"
+                    title="Type in a name"
+                    style="background-color:cadetblue">
+                <i class="search_icon dw dw-search"></i>
+            </div>
 
-                <div class="card-body">
-                  <h4 class="card-title">Data User</h4>
-
-                  <div class="table-responsive">
-                    <table id="table" class="table table-striped">
-                      <thead>
+            <div class="card-box pd-20 height-100-p mb-30">
+				<table class="data-table table nowrap">
+                    <thead>
                         <tr>
-                          <th>
-                            Name
-                          </th>
-                          <th>
-                            Username
-                          </th>
-                          <th>
-                            Email
-                          </th>
-                          <th>
-                            Created At
-                          </th>
-                          <th>
-                            Action
-                          </th>
+                            <th> Name </th>
+                            <th> Username </th>
+                            <th> Email </th>
+                            <th> Level </th>
+                            <th class="datatable-nosort">Action</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -70,11 +77,26 @@
                             {{$data->email}}
                           </td>
                           <td>
-                            {{$data->created_at}}
+                            {{$data->level}}
                           </td>
                           <td>
-                           <div class="btn-group dropdown">
-                          <button type="button" class="btn btn-success dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div class="dropdown">
+                                <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                                    <i class="dw dw-more"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                                    <a class="dropdown-item" href="{{route('user.show', $data->id)}}"><i class="dw dw-eye"></i> View</a>
+                                    <a class="dropdown-item" href="{{route('user.edit', $data->id)}}"><i class="dw dw-edit2"></i> Edit</a>
+                                    <form action="{{ route('user.destroy', $data->id) }}" class="pull-left"  method="post">
+                                        {{ csrf_field() }}
+                                        {{ method_field('delete') }}
+                                    <a class="dropdown-item" onclick="return confirm('Anda yakin ingin menghapus data ini?')"><i class="dw dw-delete-3"></i> Delete</a>
+                                </div>
+                            </div>
+                        </td>
+                          {{--  <td>
+                            <div class="btn-group dropdown">
+                            <button type="button" class="btn btn-success dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Action
                           </button>
                           <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 30px, 0px);">
@@ -86,17 +108,30 @@
                             </button>
                           </form>
 
-                          </div>
-                        </div>
-                          </td>
+                            </div>
+                            </div>
+                          </td>  --}}
                         </tr>
                       @endforeach
                       </tbody>
                     </table>
-                  </div>
-                  {{-- {!! $datas->links() !!} --}}
                 </div>
-              </div>
             </div>
-          </div>
+            {{-- Footer --}}
+            @include('Baru.Layouts.footer')
+            {{-- End Footer --}}
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+          $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+          });
+        });
+    </script>
+
 @endsection

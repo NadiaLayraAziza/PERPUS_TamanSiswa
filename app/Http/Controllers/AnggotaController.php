@@ -99,7 +99,7 @@ class AnggotaController extends Controller
 
         $data = Anggota::findOrFail($id);
 
-        return view('anggota.show', compact('data'));
+        return view('Baru.Admin.Anggota.show', compact('data'));
     }
 
     /**

@@ -8,182 +8,141 @@
 } );
 </script>
 @stop
-@extends('layouts.app')
-
-@section('content')
-    <div class="row">
-        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-            <div class="card card-statistics">
-                <div class="card-body">
-                  <div class="clearfix">
-                    <div class="float-left">
-                        <i class="fa fa-edit fa-3x"></i>
+@extends('Baru.Admin.Admin-main')
+@section('Content')
+<div class="main-container">
+    <div class="pd-ltr-20">
+        <div class="row">
+            <div class="col-xl-3 mb-30">
+                <div class="card-box height-100-p widget-style1">
+                    <div class="d-flex flex-wrap align-items-center">
+                        <div class="progress-data" style="padding-left: 10px">
+                            <i class="fa fa-edit fa-4x"></i>
+                        </div>
+                        <div class="widget-data">
+                            <div class="weight-600 font-18">Transaksi</div>
+                            <div class="h3 mb-0">{{$transaksi->count()}}</div>
+                        </div>
+                        <p class="text-muted mt-3 mb-0">
+                            <i class="fa fa-edit" aria-hidden="true"></i> Total seluruh transaksi
+                        </p>
                     </div>
-                    <div class="float-right">
-                      <p class="mb-0 text-right">Transaksi</p>
-                      <div class="fluid-container">
-                        <h3 class="font-weight-medium text-right mb-0">{{$transaksi->count()}}</h3>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="text-muted mt-3 mb-0">
-                    <i class="fa fa-edit" aria-hidden="true"></i> Total seluruh transaksi
-                  </p>
                 </div>
-              </div>
             </div>
-            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
-                <div class="card-body">
-                  <div class="clearfix">
-                    <div class="float-left">
-                        <i class="fas fa-calendar-alt fa-3x"></i>
+            <div class="col-xl-3 mb-30">
+                <div class="card-box height-100-p widget-style1">
+                    <div class="d-flex flex-wrap align-items-center">
+                        <div class="progress-data" style="padding-left: 10px">
+                            <i class="icon-copy dw dw-id-card2 fa-4x"></i>
+                        </div>
+                        <div class="widget-data">
+                            <div class="weight-600 font-18">Admin</div>
+                            <div class="h3 mb-0">{{$user->where('level', 'admin')->count()}}</div>
+                        </div>
+                        <p class="text-muted mt-3 mb-0">
+                            <i class="icon-copy dw dw-id-card2" aria-hidden="true"></i> Total Seluruh Admin
+                        </p>
                     </div>
-                    <div class="float-right">
-                      <p class="mb-0 text-right">Sedang Pinjam</p>
-                      <div class="fluid-container">
-                        <h3 class="font-weight-medium text-right mb-0">{{$transaksi->where('status', 'pinjam')->count()}}</h3>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="text-muted mt-3 mb-0">
-                    <i class="fas fa-calendar-alt" aria-hidden="true"></i> sedang dipinjam
-                  </p>
                 </div>
-              </div>
             </div>
-            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
-                <div class="card-body">
-                  <div class="clearfix">
-                    <div class="float-left">
-                        <i class="fas fa-book fa-3x" style="width: 40px;height: 40px; "></i>
+            <div class="col-xl-3 mb-30">
+                <div class="card-box height-100-p widget-style1">
+                    <div class="d-flex flex-wrap align-items-center">
+                        <div class="progress-data" style="padding-left: 10px">
+                            <i class="fa fa-book fa-4x"></i>
+                        </div>
+                        <div class="widget-data">
+                            <div class="weight-600 font-18">Buku</div>
+                            <div class="h3 mb-0">{{$buku->count()}}</div>
+                        </div>
+                        <p class="text-muted mt-3 mb-0">
+                            <i class="fa fa-book" aria-hidden="true"></i> Total Judul Buku
+                        </p>
                     </div>
-                    <div class="float-right">
-                      <p class="mb-0 text-right">Buku</p>
-                      <div class="fluid-container">
-                        <h3 class="font-weight-medium text-right mb-0">{{$buku->count()}}</h3>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="text-muted mt-3 mb-0">
-                    <i class="fas fa-book" aria-hidden="true"></i> Total judul buku
-                  </p>
                 </div>
-              </div>
             </div>
-            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
-                <div class="card-body">
-                  <div class="clearfix">
-                    <div class="float-left">
-                        <i class="fas fa-users fa-3x"></i>
+            <div class="col-xl-3 mb-30">
+                <div class="card-box height-100-p widget-style1">
+                    <div class="d-flex flex-wrap align-items-center">
+                        <div class="progress-data" style="padding-left: 10px">
+                            <i class="fa fa-users fa-3x"></i>
+                        </div>
+                        <div class="widget-data">
+                            <div class="weight-600 font-18">Anggota</div>
+                            <div class="h3 mb-0">{{$transaksi->count()}}</div>
+                        </div>
+                        <p class="text-muted mt-3 mb-0">
+                            <i class="fa fa-users" aria-hidden="true"></i> Total Seluruh Anggota
+                        </p>
                     </div>
-                    <div class="float-right">
-                      <p class="mb-0 text-right">Anggota</p>
-                      <div class="fluid-container">
-                        <h3 class="font-weight-medium text-right mb-0">{{$anggota->count()}}</h3>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="text-muted mt-3 mb-0">
-                    <i class="fas fa-users" aria-hidden="true"></i> Total seluruh anggota
-                  </p>
                 </div>
-              </div>
             </div>
         </div>
-        <div class="row" >
-            <div class="col-lg-12 grid-margin stretch-card">
-              <div class="card">
+        <div class="row">
 
-                <div class="card-body">
-                    <div class="card-header">
-                        <h5 style="color: white">Data Transaksi sedang pinjam</h5>
-                        <div class="card-header-right">
-                            <ul class="list-unstyled card-option">
-                                <li><i class="fa fa fa-wrench open-card-option"></i></li>
-                                <li><i class="fa fa-window-maximize full-card"></i></li>
-                                <li><i class="fa fa-minus minimize-card"></i></li>
-                                <li><i class="fa fa-refresh reload-card"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                  {{--  <h4 class="card-title">Data Transaksi sedang pinjam</h4>  --}}
+        </div>
+        <div class="card-box mb-30">
+            <h2 class="h4 pd-20">Data Transaksi Sedang Pinjam</h2>
+            <table class="data-table table nowrap">
+                <thead>
+                    <tr>
+                        <th> Kode </th>
+                        <th> Buku </th>
+                        <th> Peminjam </th>
+                        <th> Tgl Pinjam </th>
+                        <th> Tgl Kembali </th>
+                        <th> Status </th>
+                        <th> Action </th>
+                        {{--  <th class="datatable-nosort">Action</th>  --}}
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach($datas as $data)
+                    <tr>
+                        <td class="table-plus">
+                            <a href="{{route('transaksi.show', $data->id)}}">
+                                {{$data->kode_transaksi}}
+                            </a>
+                        </td>
+                        <td> {{$data->buku->judul}} </td>
+                        <td> {{$data->anggota->nama}} </td>
+                        <td> {{date('d/m/y', strtotime($data->tgl_pinjam))}} </td>
+                        <td> {{date('d/m/y', strtotime($data->tgl_kembali))}} </td>
+                        <td>
+                            @if($data->status == 'pinjam')
+                                <label class="badge badge-warning">Pinjam</label>
+                            @else
+                                <label class="badge badge-success">Kembali</label>
+                            @endif
+                        </td>
+                        <td>
+                            <form action="{{ route('transaksi.update', $data->id) }}" method="post" enctype="multipart/form-data">
+                                @csrf
+                                @method('PUT')
+                                <button class="btn btn-info btn-sm" onclick="return confirm('Anda yakin data ini sudah kembali?')">Kembalikan Buku
+                                </button>
+                            </form>
+                        </td>
+                        {{--  <td>
+                            <div class="dropdown">
+                                <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                                    <i class="dw dw-more"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                                    <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
+                                    <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
+                                    <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
+                                </div>
+                            </div>
+                        </td>  --}}
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
 
-                  <div class="table-responsive">
-                    <table class="table table-striped" id="table">
-                      <thead>
-                        <tr>
-                          <th>
-                            Kode
-                          </th>
-                          <th>
-                            Buku
-                          </th>
-                          <th>
-                            Peminjam
-                          </th>
-                          <th>
-                            Tgl Pinjam
-                          </th>
-                          <th>
-                            Tgl Kembali
-                          </th>
-                          <th>
-                            Status
-                          </th>
-                          <th>
-                            Action
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                      @foreach($datas as $data)
-                        <tr>
-                          <td class="py-1">
-                          <a href="{{route('transaksi.show', $data->id)}}">
-                            {{$data->kode_transaksi}}
-                          </a>
-                          </td>
-                          <td>
-
-                            {{$data->buku->judul}}
-
-                          </td>
-
-                          <td>
-                            {{$data->anggota->nama}}
-                          </td>
-                          <td>
-                           {{date('d/m/y', strtotime($data->tgl_pinjam))}}
-                          </td>
-                          <td>
-                            {{date('d/m/y', strtotime($data->tgl_kembali))}}
-                          </td>
-                          <td>
-                          @if($data->status == 'pinjam')
-                            <label class="badge badge-warning">Pinjam</label>
-                          @else
-                            <label class="badge badge-success">Kembali</label>
-                          @endif
-                          </td>
-                          <td>
-                          <form action="{{ route('transaksi.update', $data->id) }}" method="post" enctype="multipart/form-data">
-                            {{ csrf_field() }}
-                            {{ method_field('put') }}
-                            <button class="btn btn-info btn-sm" onclick="return confirm('Anda yakin data ini sudah kembali?')">Kembalikan Buku
-                            </button>
-                          </form>
-
-                          </td>
-                        </tr>
-                      @endforeach
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        </div>
+    </div>
+</div>
 @endsection

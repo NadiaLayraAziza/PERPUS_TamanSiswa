@@ -1,9 +1,12 @@
 <div class="left-side-bar">
-    <div class="brand-logo">
-        <a href="index.html">
-            <img src="{{ asset('vendors/images/deskapp-logo.svg')}}" alt="" class="dark-logo">
-            <img src="{{ asset('vendors/images/deskapp-logo-white.svg')}}" alt="" class="light-logo">
-        </a>
+    <div class="brand-logo" style="padding-left: 40px; padding-top: 7px" >
+        {{--  <a href="index.html">  --}}
+            <img  class="img-80 img-radius" src="{{ asset('vendors/images/logo-smk.png')}}" style="width: 150px;">
+            {{--  class="img-80 img-radius"  --}}
+            {{--  style="width: 150px;"  --}}
+            {{--  <img src="{{ asset('vendors/images/deskapp-logo.svg')}}" alt="" class="dark-logo">
+            <img src="{{ asset('vendors/images/deskapp-logo-white.svg')}}" alt="" class="light-logo">  --}}
+        {{--  </a>  --}}
         <div class="close-sidebar" data-toggle="left-sidebar-close">
             <i class="ion-close-round"></i>
         </div>
@@ -28,9 +31,9 @@
                     </a>
                     <ul class="submenu">
                         <li>
-                            <a href="#" class="dropdown-toggle no-arrow">
+                            <a href="{{url('user')}}" class="dropdown-toggle no-arrow">
                                 <span class="micon dw dw-user-13" style="padding-left: 220px"></span>
-                                <span class="mtext">Data Admin</span>
+                                <span class="mtext">Data User</span>
                             </a>
                         </li>
                         <li>
@@ -46,8 +49,8 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="dropdown-toggle no-arrow">
-                                <span class="micon dw dw-book-2" style="padding-left: 220px"></span>
+                            <a href="{{url('/transaksi')}}" class="dropdown-toggle no-arrow">
+                                <span class="micon dw dw-edit" style="padding-left: 220px"></span>
                                 <span class="mtext">Data Transaksi</span>
                             </a>
                         </li>

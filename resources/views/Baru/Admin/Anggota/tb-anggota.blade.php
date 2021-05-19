@@ -53,9 +53,9 @@
                             <th>NISN</th>
                             <th>Jurusan</th>
                             <th>Jenis Kelamin</th>
-                            <th>Jurusan</th>
+                            {{--  <th>Jurusan</th>  --}}
                             <th>Tempat Lahir</th>
-                            <th>Action</th>
+                            <th class="datatable-nosort">Action</th>
 
                             {{-- <th class="table-plus datatable-nosort">Product</th>
                             <th>Name</th>
@@ -82,34 +82,46 @@
                             <td> {{$data->nama}}</td>
 
                             <td>
-                                @if($data->prodi == 'TI')
-                                  Teknik Informatika
-                                @elseif($data->prodi == 'SI')
-                                  Sistem Informasi
+                                @if($data->jurusan == 'TI')
+                                    Teknik Informatika
+                                @elseif($data->jurusan == 'SI')
+                                    Sistem Informasi
                                 @else
                                   Kesehatan Masyarakat
                                 @endif
                             </td>
                             <td>{{$data->jk === "L" ? "Laki - Laki" : "Perempuan"}}</td>
-                            <td>{{ $data->jurusan }}</td>
+                            {{--  <td>{{ $data->jurusan }}</td>  --}}
                             <td> {{$data->tempat_lahir}}</td>
                             <td>
-                                <form action="" method="POST">
-                                    <button type="button" class="btn" data-bgcolor="#28a745" data-color="#ffffff">
+                                <form action="{{ route('anggota.destroy', $data->id) }}" method="POST">
+                                    <a href="{{ route('anggota.show', $data->id) }}" class="btn" data-bgcolor="#28a745" data-color="#ffffff">
                                         <i class="icon-copy fa fa-info-circle" aria-hidden="true"></i>
-                                    </button>
-                                    <button type="button" class="btn" data-bgcolor="#ffc107" data-color="#ffffff">
+                                    </a>
+                                    <a href="{{route('anggota.edit', $data->id)}}" class="btn" data-bgcolor="#ffc107" data-color="#ffffff">
                                         <i class="icon-copy fa fa-pencil-square-o" aria-hidden="true"></i>
-                                    </button>
+                                    </a>
                                 @csrf
                                 @method('DELETE')
-                                <button onclick="return confirm('Anda yakin ingin meghapus data ini ?')" type="button" class="btn btn-danger" >
+                                <button onclick="return confirm('Anda yakin ingin meghapus data ini ?')" type="submit" class="btn btn-danger" >
                                     <i class="icon-copy fa fa-trash" aria-hidden="true"></i>
-                                {{-- </button>
+                                {{--  </button>
                                     <button onclick="return confirm('Anda yakin ingin meghapus data ini ?')"
-                                    type="submit" class="btn btn-danger">Delete</button>
-                                </form> --}}
+                                    type="submit" class="btn btn-danger">Delete</button>  --}}
+                                </form>
                             </td>
+                            {{--  <td>
+                                <div class="dropdown">
+                                    <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                                        <i class="dw dw-more"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                                        <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
+                                        <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
+                                        <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
+                                    </div>
+                                </div>
+                            </td>  --}}
                         </tr>
                         @endforeach
                     </tbody>

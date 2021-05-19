@@ -31,7 +31,7 @@ class TransaksiController extends Controller
         } else {
             $datas = Transaksi::get();
         }
-        return view('transaksi.index', compact('datas'));
+        return view('Baru.Admin.Transaksi.tb-transaksi', compact('datas'));
     }
 
     /**
@@ -65,7 +65,7 @@ class TransaksiController extends Controller
 
         $bukus = Buku::where('jumlah_buku', '>', 0)->get();
         $anggotas = Anggota::get();
-        return view('transaksi.create', compact('bukus', 'kode', 'anggotas'));
+        return view('Baru.Admin.Transaksi.create', compact('bukus', 'kode', 'anggotas'));
     }
 
     /**
@@ -123,7 +123,7 @@ class TransaksiController extends Controller
         }
 
 
-        return view('transaksi.show', compact('data'));
+        return view('Baru.Admin.Transaksi.show', compact('data'));
     }
 
     /**
@@ -141,7 +141,7 @@ class TransaksiController extends Controller
                 return redirect()->to('/');
         }
 
-        return view('buku.edit', compact('data'));
+        return view('Baru.Admin.Transaksi.edit', compact('data'));
     }
 
     /**

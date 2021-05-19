@@ -17,17 +17,17 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="title">
-                            <h4>Data Anggota</h4>
+                            <h4>Data Peminjaman</h4>
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="index.html">Data Master</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Anggota</li>
+                                <li class="breadcrumb-item active" aria-current="page">Peminjaman</li>
                             </ol>
                         </nav>
                     </div>
                     <div class="col-md-6 col-sm-12 text-right">
-                        <a href="{{ route('anggota.create') }}" type="button" class="btn" data-bgcolor="#3b5998" data-color="#ffffff">
+                        <a href="{{ route('transaksi.create') }}" type="button" class="btn" data-bgcolor="#3b5998" data-color="#ffffff">
                             <i class="icon-copy fa fa-user-plus" aria-hidden="true"></i>
                             Tambah Data
                         </a>
@@ -49,21 +49,15 @@
 				<table class="data-table table nowrap">
                     <thead>
                         <tr>
-                            <th>Nama</th>
-                            <th>NISN</th>
-                            <th>Jurusan</th>
-                            <th>Jenis Kelamin</th>
-                            <th>Jurusan</th>
-                            <th>Tempat Lahir</th>
+                            <th>Kode</th>
+                            <th>Buku</th>
+                            <th>Nama Peminjam</th>
+                            <th>Tgl Pinjam</th>
+                            <th>Tgl Kembali</th>
+                            {{--  <th>Durasi</th>
+                            <th>Denda</th>  --}}
+                            <th>Status</th>
                             <th>Action</th>
-
-                            {{-- <th class="table-plus datatable-nosort">Product</th>
-                            <th>Name</th>
-                            <th>Color</th>
-                            <th>Size</th>
-                            <th>Price</th>
-                            <th>Oty</th>
-                            <th class="datatable-nosort">Action</th> --}}
                         </tr>
                     </thead>
                     <tbody id="myTable">
@@ -78,21 +72,22 @@
                                 @endif
                                 {{$data->nama}}
                             </td> --}}
-                            <td> {{$data->nisn}} </td>
-                            <td> {{$data->nama}}</td>
-
                             <td>
-                                @if($data->prodi == 'TI')
-                                  Teknik Informatika
-                                @elseif($data->prodi == 'SI')
-                                  Sistem Informasi
+                                <a href="{{route('transaksi.show', $data->id)}}">
+                                    {{$data->kode_transaksi}}
+                                </a>
+                            </td>
+                            <td> {{$data->buku->judul}} </td>
+                            <td> {{$data->anggota->nama}} </td>
+                            <td> {{date('d/m/y', strtotime($data->tgl_pinjam))}} </td>
+                            <td> {{date('d/m/y', strtotime($data->tgl_kembali))}} </td>
+                            <td>
+                                @if($data->status == 'pinjam')
+                                    <label class="badge badge-warning">Pinjam</label>
                                 @else
-                                  Kesehatan Masyarakat
+                                    <label class="badge badge-success">Kembali</label>
                                 @endif
                             </td>
-                            <td>{{$data->jk === "L" ? "Laki - Laki" : "Perempuan"}}</td>
-                            <td>{{ $data->jurusan }}</td>
-                            <td> {{$data->tempat_lahir}}</td>
                             <td>
                                 <form action="" method="POST">
                                     <button type="button" class="btn" data-bgcolor="#28a745" data-color="#ffffff">

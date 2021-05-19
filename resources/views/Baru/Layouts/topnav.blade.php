@@ -20,18 +20,22 @@
             <div class="dropdown">
                 <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
                     <span class="user-icon">
-                        <img src="{{ asset('vendors/images/photo1.jpg')}}" alt="">
+                        @if(Auth::user()->gambar == '')
+                        <img class="img-radius" src="{{asset('images/user/default.png')}}" alt="User-Profile-Image">
+                        @else
+                        <img class="img-radius" src="{{asset('images/user/'.Auth::user()->gambar)}}" alt="User-Profile-Image">
+                        @endif
+                        {{--  <img src="{{ asset('vendors/images/photo1.jpg')}}" alt="">  --}}
                     </span>
                     <span class="profile-text">Hello, {{Auth::user()->name}} !</span>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                    <a class="dropdown-item" href="profile.html"><i class="dw dw-user1"></i> Profile</a>
-                    <a class="dropdown-item" href="profile.html"><i class="dw dw-settings2"></i> Setting</a>
-                    <a class="dropdown-item" href="faq.html"><i class="dw dw-help"></i> Help</a>
+                    <a class="dropdown-item" href="{{route('user.show', Auth::user()->id)}}"><i class="dw dw-user1"></i> Profile</a>
+                    <a class="dropdown-item" href="{{route('user.edit', Auth::user()->id)}}"><i class="dw dw-settings2"></i> Setting</a>
                     <a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();">
+                        document.getElementById('logout-form').submit();"><i class="dw dw-logout"></i>
                         {{ __('Logout') }}
                     </a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
