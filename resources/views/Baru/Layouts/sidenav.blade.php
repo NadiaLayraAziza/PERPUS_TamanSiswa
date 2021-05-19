@@ -40,16 +40,16 @@
                     </a>
                 </li>
                 @endif
+                @if(Auth::user()->level == 'user')
                 <li>
                     <div class="dropdown-divider"></div>
                 </li>
-
                 <li>
                     <a href="{{url('/katalog')}}" class="dropdown-toggle no-arrow">
                         <span class="micon dw dw-book-1"></span><span class="mtext">Katalog</span>
                     </a>
                 </li>
-                
+                @endif
                 {{--  <li>
                     <div class="dropdown-divider"></div>
                 </li>

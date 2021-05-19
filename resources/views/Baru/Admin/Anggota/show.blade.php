@@ -18,7 +18,7 @@ $(document).ready(function() {
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="title">
-                            <h4>Tambah Data Anggota</h4>
+                            <h4>Show Detail Anggota</h4>
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
@@ -41,51 +41,53 @@ $(document).ready(function() {
                 <div class="product-detail-wrap mb-30">
                     <div class="row">
                         <div class="col-lg-6 col-md-12 col-sm-12">
-                        <div class="pd-20 card-box height-100-p">
-							<div class="profile-photo">
-								<img src="vendors/images/photo1.jpg" alt="" class="avatar-photo">
-								<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-									<div class="modal-dialog modal-dialog-centered" role="document">
-										<div class="modal-content">
-											<div class="modal-body pd-5">
-												<div class="img-container">
-													<img id="image" src="vendors/images/photo2.jpg" alt="Picture">
-												</div>
-											</div>
-											<div class="modal-footer">
-												<input type="submit" value="Update" class="btn btn-primary">
-												<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<h5 class="text-center h5 mb-0">Ross C. Lopez</h5>
-							<p class="text-center text-muted font-14">Lorem ipsum dolor sit amet</p>
-						</div>
+                            <div class="pd-20 card-box height-100-p" style="padding-left: 70px">
+                                {{--  <div class="profile-photo">  --}}
+                                    {{--  <img src="vendors/images/photo1.jpg" alt="" class="avatar-photo">  --}}
+                                    <img height="350" width="350" @if($data->user->gambar) src="{{ asset('images/user/'.$data->user->gambar) }}" @endif />
+                                {{--  </div>  --}}
+                            </div>
                         </div>
                         <div class="col-lg-6 col-md-12 col-sm-12">
                             <div class="product-detail-desc pd-20 card-box height-100-p">
                                 <div class="profile-info">
-                                    <h5 class="mb-20 h5 text-blue">Contact Information</h5>
+                                    <h5 class="mb-20 h5 text-blue">Informasi Detail Anggota</h5>
                                     <ul>
-                                        <li>
-                                            <span>Email Address:</span>
-                                            FerdinandMChilds@test.com
-                                        </li>
-                                        <li>
-                                            <span>Phone Number:</span>
-                                            619-229-0054
-                                        </li>
-                                        <li>
-                                            <span>Country:</span>
-                                            America
-                                        </li>
-                                        <li>
-                                            <span>Address:</span>
-                                            1807 Holden Street<br>
-                                            San Diego, CA 92115
-                                        </li>
+                                        <tr>
+                                            <th>Nama</th>
+                                            <td>:</td>
+                                            <td>{{$data->nama}}</td>
+                                        </tr>
+                                        <br><br>
+                                        <tr>
+                                            <th>Tempat Lahir</th>
+                                            <td>:</td>
+                                            <td>{{$data->tempat_lahir}}</td>
+                                        </tr>
+                                        <br><br>
+                                        <tr>
+                                            <th>Tanggal Lahir</th>
+                                            <td>:</td>
+                                            <td>{{$data->tgl_lahir}}</td>
+                                        </tr>
+                                        <br><br>
+                                        <tr>
+                                            <th>Jenis Kelamin</th>
+                                            <td>:</td>
+                                            <td>{{$data->jk}}</td>
+                                        </tr>
+                                        <br><br>
+                                        <tr>
+                                            <th>Jurusan</th>
+                                            <td>:</td>
+                                            <td>{{$data->jurusan}}</td>
+                                        </tr>
+                                        <br><br>
+                                        <tr>
+                                            <th>User Login</th>
+                                            <td>:</td>
+                                            <td>{{$data->user->username}}</td>
+                                        </tr>
                                     </ul>
                                 </div>
                             </div>
