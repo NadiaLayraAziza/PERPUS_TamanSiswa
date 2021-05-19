@@ -91,10 +91,10 @@
                                 <button onclick="return confirm('Anda yakin ingin meghapus data ini ?')" type="submit" class="btn btn-danger" >
                                     <i class="icon-copy fa fa-trash" aria-hidden="true"></i>
                                 @endif
-                                {{-- </button>
+                                {{--  </button>
                                     <button onclick="return confirm('Anda yakin ingin meghapus data ini ?')"
-                                    type="submit" class="btn btn-danger">Delete</button>
-                                </form> --}}
+                                    type="submit" class="btn btn-danger">Delete</button>  --}}
+                                </form>
                             </td>
                         </tr>
                         @endforeach
