@@ -31,6 +31,13 @@
 
 		gtag('config', 'UA-119386393-1');
 	</script>
+	<style>
+		img.katalog {
+     width: 200px;
+     height: 300px;
+     padding: 10px;
+   }
+		</style>
 </head>
 <body>
 	<!-- <div class="pre-loader">

@@ -223,4 +223,32 @@ class BukuController extends Controller
         alert()->success('Berhasil.','Data telah diimport!');
         return back();
     }
+
+    public function kata(){
+        $datas = Buku::get();
+        return view('Baru.Siswa.katalog', compact('datas'));
+
+
+    }
+
+    public function katalog(Request $request)
+    {
+
+        if($request->has('search')){ // Pemilihan jika ingin melakukan pencarian
+            $datas= Buku::where('judul', 'like', "%".$request->search."%")
+            ->orwhere('isbn', 'like', "%".$request->search."%")
+            ->orwhere('pengarang', 'like', "%".$request->search."%")
+            ->orwhere('penerbit', 'like', "%".$request->search."%")
+            ->orwhere('tahun_terbit', 'like', "%".$request->search."%")
+            ->orwhere('lokasi', 'like', "%".$request->search."%")
+            ->orwhere('jumlah_buku', 'like', "%".$request->search."%")
+            ->paginate();
+        } else { // Pemilihan jika tidak melakukan pencarian
+            //fungsi eloquent menampilkan data menggunakan pagination
+            $datas= Buku::paginate(5); // Pagination menampilkan 5 data
+        }
+        return view('Baru.Siswa.katalog',compact('datas'))->with('i',(request()->input('datas',1)-1)*5);
+    }
+
+
 }

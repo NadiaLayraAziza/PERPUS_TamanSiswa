@@ -46,3 +46,4 @@ Route::get('/laporan/buku', [LaporanController::class,'buku']);
 Route::get('/laporan/buku/pdf', [LaporanController::class,'bukuPdf']);
 Route::get('/laporan/buku/excel', [LaporanController::class,'bukuExcel']);
 
+Route::get('/katalog', [BukuController::class,'katalog']);

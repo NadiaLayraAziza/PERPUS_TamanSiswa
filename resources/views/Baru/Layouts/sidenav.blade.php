@@ -31,19 +31,25 @@
                         <span class="micon dw dw-user-1"></span><span class="mtext">Data User</span>
                     </a>
                 </li>
-                @endif
                 <li>
                     <div class="dropdown-divider"></div>
                 </li>
                 <li>
                     <a href="{{url('/buku')}}" class="dropdown-toggle no-arrow">
-                        @if(Auth::user()->level == 'user')
-                        <span class="micon dw dw-book-1"></span><span class="mtext">Katalog Buku</span>
-                        @else
                         <span class="micon dw dw-book-1"></span><span class="mtext">Data Buku</span>
-                        @endif
                     </a>
                 </li>
+                @endif
+                <li>
+                    <div class="dropdown-divider"></div>
+                </li>
+
+                <li>
+                    <a href="{{url('/katalog')}}" class="dropdown-toggle no-arrow">
+                        <span class="micon dw dw-book-1"></span><span class="mtext">Katalog</span>
+                    </a>
+                </li>
+                
                 {{--  <li>
                     <div class="dropdown-divider"></div>
                 </li>
