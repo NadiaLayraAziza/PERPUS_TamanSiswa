@@ -30,7 +30,7 @@ class AnggotaController extends Controller
             return redirect()->to('/');
         }
 
-        $datas = Anggota::get();
+        $datas = Anggota::paginate(10);
         // return view('anggota.index', compact('datas'));
         return view('Baru.Admin.Anggota.tb-anggota', compact('datas'));
     }

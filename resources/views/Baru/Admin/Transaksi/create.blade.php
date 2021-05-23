@@ -1,22 +1,4 @@
 @section('js')
- <script type="text/javascript">
-   $(document).on('click', '.pilih', function (e) {
-                document.getElementById("buku_judul").value = $(this).attr('data-buku_judul');
-                document.getElementById("buku_id").value = $(this).attr('data-buku_id');
-                $('#myModal').modal('hide');
-            });
-
-            $(document).on('click', '.pilih_anggota', function (e) {
-                document.getElementById("anggota_id").value = $(this).attr('data-anggota_id');
-                document.getElementById("anggota_nama").value = $(this).attr('data-anggota_nama');
-                $('#myModal2').modal('hide');
-            });
-
-             $(function () {
-                $("#lookup, #lookup2").dataTable();
-            });
-
-        </script>
 
 @stop
 @section('css')
@@ -198,9 +180,9 @@
                                 <tr class="pilih" data-buku_id="<?php echo $data->id; ?>" data-buku_judul="<?php echo $data->judul; ?>" >
                                     <td>
                                         @if($data->cover)
-                                            <img src="{{url('images/buku/'. $data->cover)}}" alt="image" style="margin-right: 10px;" />
+                                            <img src="{{url('images/buku/'. $data->cover)}}" alt="image" style="margin-right: 10px; width: 40px; height:70px" />
                                         @else
-                                            <img src="{{url('images/buku/default.png')}}" alt="image" style="margin-right: 10px;" />
+                                            <img src="{{url('images/buku/default.png')}}" alt="image" style="margin-right: 10px; width: 40px; height:70px" />
                                         @endif
                                         {{$data->judul}}
                                     </td>
@@ -243,9 +225,9 @@
                                 <tr class="pilih_anggota" data-anggota_id="<?php echo $data->id; ?>" data-anggota_nama="<?php echo $data->nama; ?>" >
                                     <td class="py-1">
                                         @if($data->user->gambar)
-                                            <img src="{{url('images/user', $data->user->gambar)}}" alt="image" style="margin-right: 10px;" />
+                                            <img src="{{url('images/user', $data->user->gambar)}}" alt="image" style="margin-right: 10px; width: 50px; height:50px" />
                                         @else
-                                            <img src="{{url('images/user/default.png')}}" alt="image" style="margin-right: 10px;" />
+                                            <img src="{{url('images/user/default.png')}}" alt="image" style="margin-right: 10px; 50px; height:50px" />
                                         @endif
                                         {{$data->nama}}
                                     </td>
@@ -279,5 +261,23 @@
       });
     });
 </script>
+<script type="text/javascript">
+    $(document).on('click', '.pilih', function (e) {
+                 document.getElementById("buku_judul").value = $(this).attr('data-buku_judul');
+                 document.getElementById("buku_id").value = $(this).attr('data-buku_id');
+                 $('#myModal').modal('hide');
+             });
+
+             $(document).on('click', '.pilih_anggota', function (e) {
+                 document.getElementById("anggota_id").value = $(this).attr('data-anggota_id');
+                 document.getElementById("anggota_nama").value = $(this).attr('data-anggota_nama');
+                 $('#myModal2').modal('hide');
+             });
+
+              $(function () {
+                 $("#lookup, #lookup2").dataTable();
+             });
+
+         </script>
 
 @endsection

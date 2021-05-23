@@ -66,7 +66,7 @@
 				<table class="data-table table nowrap">
                     <thead>
                         <tr>
-                            <th>Kode</th>
+                            {{--  <th>Kode</th>  --}}
                             <th>Buku</th>
                             <th>Nama Peminjam</th>
                             <th>Tgl Pinjam</th>
@@ -91,11 +91,11 @@
                                 @endif
                                 {{$data->nama}}
                             </td> --}}
-                            <td>
+                            {{--  <td>
                                 <a href="{{route('transaksi.show', $data->id)}}">
                                     {{$data->kode_transaksi}}
                                 </a>
-                            </td>
+                            </td>  --}}
                             <td> {{$data->buku->judul}} </td>
                             <td> {{$data->anggota->nama}} </td>
                             <td> {{date('d/m/y', strtotime($data->tgl_pinjam))}} </td>
@@ -130,6 +130,9 @@
                         @endforeach
                     </tbody>
                 </table>
+                <div class="d-flex justify-content-left">
+                    {{$data->links()}}
+                </div>
 			</div>
 
         </div>

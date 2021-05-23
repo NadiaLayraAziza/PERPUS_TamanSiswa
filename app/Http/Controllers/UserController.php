@@ -25,7 +25,7 @@ class UserController extends Controller
             return redirect()->to('/');
         }
 
-        $datas = User::get();
+        $datas = User::paginate(10);
         return view('auth.user', compact('datas'));
     }
 

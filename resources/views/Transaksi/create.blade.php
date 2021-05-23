@@ -1,23 +1,4 @@
 @section('js')
- <script type="text/javascript">
-   $(document).on('click', '.pilih', function (e) {
-                document.getElementById("buku_judul").value = $(this).attr('data-buku_judul');
-                document.getElementById("buku_id").value = $(this).attr('data-buku_id');
-                $('#myModal').modal('hide');
-            });
-
-            $(document).on('click', '.pilih_anggota', function (e) {
-                document.getElementById("anggota_id").value = $(this).attr('data-anggota_id');
-                document.getElementById("anggota_nama").value = $(this).attr('data-anggota_nama');
-                $('#myModal2').modal('hide');
-            });
-
-             $(function () {
-                $("#lookup, #lookup2").dataTable();
-            });
-
-        </script>
-
 @stop
 @section('css')
 
@@ -261,5 +242,24 @@
                 </div>
             </div>
         </div>
+
+        <script type="text/javascript">
+            $(document).on('click', '.pilih', function (e) {
+                         document.getElementById("buku_judul").value = $(this).attr('data-buku_judul');
+                         document.getElementById("buku_id").value = $(this).attr('data-buku_id');
+                         $('#myModal').modal('hide');
+                     });
+
+                     $(document).on('click', '.pilih_anggota', function (e) {
+                         document.getElementById("anggota_id").value = $(this).attr('data-anggota_id');
+                         document.getElementById("anggota_nama").value = $(this).attr('data-anggota_nama');
+                         $('#myModal2').modal('hide');
+                     });
+
+                      $(function () {
+                         $("#lookup, #lookup2").dataTable();
+                     });
+
+                 </script>
 
 @endsection

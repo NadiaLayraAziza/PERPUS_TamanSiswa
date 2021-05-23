@@ -29,7 +29,7 @@ class BukuController extends Controller
         //     return redirect()->to('/');
         // }
 
-        $datas = Buku::get();
+        $datas = Buku::paginate(10);
         return view('Baru.Admin.Buku.tb-buku', compact('datas'));
     }
 

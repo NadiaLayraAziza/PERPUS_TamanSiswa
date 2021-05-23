@@ -117,6 +117,9 @@
                       @endforeach
                       </tbody>
                     </table>
+                    <div class="d-flex justify-content-left">
+                        {{$data->links()}}
+                    </div>
                 </div>
             </div>
             {{-- Footer --}}

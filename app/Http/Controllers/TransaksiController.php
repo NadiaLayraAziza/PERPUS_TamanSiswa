@@ -27,9 +27,9 @@ class TransaksiController extends Controller
         if(Auth::user()->level == 'user')
         {
             $datas = Transaksi::where('anggota_id', Auth::user()->anggota)
-                                ->get();
+                                ->paginate(10);
         } else {
-            $datas = Transaksi::get();
+            $datas = Transaksi::paginate(10);
         }
         return view('Baru.Admin.Transaksi.tb-transaksi', compact('datas'));
     }
