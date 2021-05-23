@@ -118,7 +118,7 @@
                       </tbody>
                     </table>
                     <div class="d-flex justify-content-left">
-                        {{$data->links()}}
+                        {{$datas->links()}}
                     </div>
                 </div>
             </div>
