@@ -39,61 +39,61 @@ class LaporanController extends Controller
 
     public function bukuExcel(Request $request)
     {
-        $nama = 'laporan_buku_'.date('Y-m-d_H-i-s');
-        Excel::create($nama, function ($excel) use ($request) {
-        $excel->sheet('Laporan Data Buku', function ($sheet) use ($request) {
+//         $nama = 'laporan_buku_'.date('Y-m-d_H-i-s');
+//         Excel::create($nama, function ($excel) use ($request) {
+//         $excel->sheet('Laporan Data Buku', function ($sheet) use ($request) {
 
-        $sheet->mergeCells('A1:H1');
+//         $sheet->mergeCells('A1:H1');
 
-       // $sheet->setAllBorders('thin');
-        $sheet->row(1, function ($row) {
-            $row->setFontFamily('Calibri');
-            $row->setFontSize(11);
-            $row->setAlignment('center');
-            $row->setFontWeight('bold');
-        });
+//        // $sheet->setAllBorders('thin');
+//         $sheet->row(1, function ($row) {
+//             $row->setFontFamily('Calibri');
+//             $row->setFontSize(11);
+//             $row->setAlignment('center');
+//             $row->setFontWeight('bold');
+//         });
 
-        $sheet->row(1, array('LAPORAN DATA BUKU'));
+//         $sheet->row(1, array('LAPORAN DATA BUKU'));
 
-        $sheet->row(2, function ($row) {
-            $row->setFontFamily('Calibri');
-            $row->setFontSize(11);
-            $row->setFontWeight('bold');
-        });
+//         $sheet->row(2, function ($row) {
+//             $row->setFontFamily('Calibri');
+//             $row->setFontSize(11);
+//             $row->setFontWeight('bold');
+//         });
 
-        $datas = Buku::all();
+//         $datas = Buku::all();
 
-       // $sheet->appendRow(array_keys($datas[0]));
-        $sheet->row($sheet->getHighestRow(), function ($row) {
-            $row->setFontWeight('bold');
-        });
+//        // $sheet->appendRow(array_keys($datas[0]));
+//         $sheet->row($sheet->getHighestRow(), function ($row) {
+//             $row->setFontWeight('bold');
+//         });
 
-         $datasheet = array();
-         $datasheet[0]  =   array("NO", "JUDUL", "ISBN", "PENGARANG",  "PENERBIT","TAHUN TERBIT","JUMLAH BUKU", "LOKASI");
-         $i=1;
+//          $datasheet = array();
+//          $datasheet[0]  =   array("NO", "JUDUL", "ISBN", "PENGARANG",  "PENERBIT","TAHUN TERBIT","JUMLAH BUKU", "LOKASI");
+//          $i=1;
 
-        foreach ($datas as $data) {
+//         foreach ($datas as $data) {
 
-            // $sheet->appendrow($data);
-            $datasheet[$i] = array($i,
-                        $data['judul'],
-                        $data['isbn'],
-                        $data['pengarang'],
-                        $data['penerbit'],
-                        $data['tahun_terbit'],
-                        $data['jumlah_buku'],
-                        $data['lokasi']
-                    );
+//             // $sheet->appendrow($data);
+//             $datasheet[$i] = array($i,
+//                         $data['judul'],
+//                         $data['isbn'],
+//                         $data['pengarang'],
+//                         $data['penerbit'],
+//                         $data['tahun_terbit'],
+//                         $data['jumlah_buku'],
+//                         $data['lokasi']
+//                     );
 
-            $i++;
-        }
+//             $i++;
+//         }
 
-        $sheet->fromArray($datasheet);
-    });
+//         $sheet->fromArray($datasheet);
+//     });
 
-})->export('xls');
+// })->export('xls');
 
-    // return Excel::download(new BukuExport, 'buku.xlsx');
+     return Excel::download(new BukuExport, 'buku.xlsx');
 
     }
 
