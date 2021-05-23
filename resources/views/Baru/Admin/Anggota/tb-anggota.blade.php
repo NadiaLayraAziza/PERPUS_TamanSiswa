@@ -64,8 +64,8 @@
 				<table class="data-table table nowrap">
                     <thead>
                         <tr>
-                            <th>Nama</th>
                             <th>NISN</th>
+                            <th>Nama</th>
                             <th>Jurusan</th>
                             <th>Jenis Kelamin</th>
                             {{--  <th>Jurusan</th>  --}}

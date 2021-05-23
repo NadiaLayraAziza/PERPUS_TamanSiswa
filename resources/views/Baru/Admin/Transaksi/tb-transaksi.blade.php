@@ -65,16 +65,16 @@
                     <table class="data-table table nowrap">
                         <thead>
                             <tr>
-                                {{-- <th>Kode</th> --}}
+                                {{--  <th>Kode</th>  --}}
                                 <th>Buku</th>
                                 <th>Nama Peminjam</th>
                                 <th>Tgl Pinjam</th>
                                 <th>Tgl Kembali</th>
                                 {{-- <th>Durasi</th>
                             <th>Denda</th> --}}
-                                <th>Status</th>
                                 @if (Auth::user()->level != 'user')
-                                    <th>Action</th>
+                                <th>Status</th>
+                                <th>Action</th>
                                 @endif
                             </tr>
                         </thead>
@@ -90,11 +90,11 @@
                                 @endif
                                 {{$data->nama}}
                             </td> --}}
-                                    {{-- <td>
-                                <a href="{{route('transaksi.show', $data->id)}}">
-                                    {{$data->kode_transaksi}}
-                                </a>
-                            </td> --}}
+                                    {{--  <td>
+                                        <a href="{{route('transaksi.show', $data->id)}}">
+                                            {{$data->kode_transaksi}}
+                                        </a>
+                                    </td>  --}}
                                     <td> {{ $data->buku->judul }} </td>
                                     <td> {{ $data->anggota->nama }} </td>
                                     <td> {{ date('d/m/y', strtotime($data->tgl_pinjam)) }} </td>

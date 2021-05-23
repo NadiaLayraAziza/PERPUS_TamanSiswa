@@ -57,8 +57,10 @@
               @endforeach --}}
               <div id="filter_list">
                 <div class="gallery-wrap">
+                    {{--  @if($datas->jumlah_buku != 0)  --}}
 					<ul class="row">
                         @foreach($datas as $data)
+                        @if($data->jumlah_buku != 0)
 						<li class="col-lg-4 col-md-6 col-sm-12">
 							<div class="da-card box-shadow">
 								<div class="da-card-photo">
@@ -66,7 +68,7 @@
                                     style="max-width: fit-content;padding-left: 70px;">
 									<div class="da-overlay" style="text-align: center">
 										<div class="da-social">
-										<h5 class="mb-10 color-white pd-20">{{$data->judul}}</h5>
+										<h5 class="color-white pd-20" style="margin-left: -130px">{{$data->judul}}</h5>
                                         <form action="{{ route('buku.destroy', $data->id) }}" method="POST">
                                             <ul class="clearfix">
                                                 <li><a href="{{ route('buku.show', $data->id) }}" data-fancybox="images"><i class="fa fa-info-circle"></i></a></li>
@@ -81,8 +83,10 @@
 								</div>
 							</div>
 						</li>
+                        @endif
 						@endforeach
 					</ul>
+                    {{--  @endif  --}}
 				</div>
               </div>
 

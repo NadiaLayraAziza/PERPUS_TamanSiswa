@@ -92,8 +92,10 @@
                         <th> Tgl Pinjam </th>
                         <th> Tgl Kembali </th>
                         <th> Status </th>
+                        @if (Auth::user()->level != 'user')
                         <th> Action </th>
                         {{--  <th class="datatable-nosort">Action</th>  --}}
+                        @endif
                     </tr>
                 </thead>
                 <tbody>
@@ -115,6 +117,7 @@
                                 <label class="badge badge-success">Kembali</label>
                             @endif
                         </td>
+                        @if (Auth::user()->level != 'user')
                         <td>
                             <form action="{{ route('transaksi.update', $data->id) }}" method="post" enctype="multipart/form-data">
                                 @csrf
@@ -135,6 +138,7 @@
                                 </div>
                             </div>
                         </td>  --}}
+                        @endif
                     </tr>
                     @endforeach
                 </tbody>

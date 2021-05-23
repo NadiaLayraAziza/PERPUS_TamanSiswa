@@ -26,7 +26,7 @@ class TransaksiController extends Controller
     {
         if(Auth::user()->level == 'user')
         {
-            $datas = Transaksi::where('anggota_id', Auth::user()->anggota)
+            $datas = Transaksi::where('anggota_id', Auth::user()->anggota->id)
                                 ->paginate(10);
         } else {
             $datas = Transaksi::paginate(10);

@@ -3,14 +3,14 @@
 <head>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	{{-- <style type="text/css">
+	<style type="text/css">
 		    table {
     border-spacing: 0;
     width: 100%;
     }
     th {
-    background: #fff5f5;
-    background: linear-gradient(#687587, #404853);
+        background: #fff5f5;
+        background: linear-gradient(#687587, #404853);
     border-left: 1px solid rgba(0, 0, 0, 0.2);
     border-right: 1px solid rgba(255, 255, 255, 0.1);
     color: rgb(0, 0, 0);
@@ -54,13 +54,13 @@
     .center {
     	text-align: center;
     }
-	</style> --}}
+	</style>
   <link rel="stylesheet" href="">
 	<title>Laporan Data Buku</title>
 </head>
 <body>
 <h1 class="center">LAPORAN DATA BUKU</h1>
- <table id="pseudo-demo" style="border-color: #404853">
+ <table id="pseudo-demo">
                       <thead>
                         <tr>
                           <th>
