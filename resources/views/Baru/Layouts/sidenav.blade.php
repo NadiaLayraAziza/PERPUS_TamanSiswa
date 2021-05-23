@@ -83,7 +83,7 @@
                 <li>
                     <div class="dropdown-divider"></div>
                 </li>
-                @if(Auth::user()->level != 'user')
+                {{-- @if(Auth::user()->level != 'user')
                 <li>
                     <a href="{{url('/laporan')}}" class="dropdown-toggle no-arrow">
                         <span class="micon dw dw-server"></span><span class="mtext">Laporan</span>
@@ -92,7 +92,7 @@
                 <li>
                     <div class="dropdown-divider"></div>
                 </li>
-                @endif
+                @endif --}}
                 {{--  <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">
                         <span class="micon dw dw-edit2"></span><span class="mtext">Siswa</span>
