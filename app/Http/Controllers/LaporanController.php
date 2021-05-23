@@ -33,8 +33,9 @@ class LaporanController extends Controller
     {
 
         $datas = Buku::all();
-        $pdf = PDF::loadView('laporan.buku_pdf', compact('datas'));
-        return $pdf->download('laporan_buku_'.date('Y-m-d_H-i-s').'.pdf');
+        $pdf = PDF::loadView('Baru.Admin.Laporan.buku_pdf', compact('datas'));
+         return $pdf->download('Baru.Admin.Laporan.buku_pdf'.date('Y-m-d_H-i-s').'.pdf');
+        //return view('Baru.Admin.Laporan.buku_pdf', compact('datas'));
     }
 
     public function bukuExcel(Request $request)
@@ -106,8 +107,9 @@ class LaporanController extends Controller
     {
 
         $datas = Anggota::all();
-        $pdf = PDF::loadView('laporan.anggota_pdf', compact('datas'));
-        return $pdf->download('laporan_anggota_'.date('Y-m-d_H-i-s').'.pdf');
+        $pdf = PDF::loadView('Baru.Admin.Laporan.anggota_pdf', compact('datas'));
+        // return $pdf->download('laporan_anggota'.date('Y-m-d_H-i-s').'.pdf');
+        return view('Baru.Admin.Laporan.anggota_pdf', compact('datas'));
     }
 
     public function anggotaExcel(Request $request)
@@ -197,9 +199,10 @@ class LaporanController extends Controller
 
         $datas = $q->get();
 
-       // return view('laporan.transaksi_pdf', compact('datas'));
-       $pdf = PDF::loadView('laporan.transaksi_pdf', compact('datas'));
-       return $pdf->download('laporan_transaksi_'.date('Y-m-d_H-i-s').'.pdf');
+        $datas = Transaksi::all();
+        $pdf = PDF::loadView('Baru.Admin.Laporan.transaksi_pdf', compact('datas'));
+        // return $pdf->download('laporan_transaksi'.date('Y-m-d_H-i-s').'.pdf');
+        return view('Baru.Admin.Laporan.transaksi_pdf', compact('datas'));
     }
 
 
