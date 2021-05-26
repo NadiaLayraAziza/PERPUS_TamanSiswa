@@ -49,7 +49,9 @@ Route::get('/laporan/buku', [LaporanController::class,'buku']);
 Route::get('/laporan/buku/pdf', [LaporanController::class,'bukuPdf']);
 Route::get('/laporan/buku/excel', [LaporanController::class,'bukuExcel']);
 
-Route::get('/laporan/anggota/pdf', 'LaporanController@anggotaPdf')->name('laporan.anggota');
+Route::get('/laporan/user/pdf', [LaporanController::class,'userPdf']);
+
+Route::get('/laporan/anggota/pdf', [LaporanController::class,'anggotaPdf']);
 Route::get('/laporan/anggota', [LaporanController::class,'anggota']);
 // Route::get('/laporan/anggota/pdf', [LaporanController::class,'anggotaPdf']);
 Route::get('/laporan/anggota/excel', [LaporanController::class,'anggotaExcel']);

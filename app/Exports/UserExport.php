@@ -2,17 +2,17 @@
 
 namespace App\Exports;
 
-use App\Models\Transaksi as ModelsTransaksi;
-use App\Transaksi;
+use App\Models\User as ModelsUser;
+use App\User;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
-class TransaksiExport implements FromCollection
+class UserExport implements FromCollection
 {
     /**
     * @return \Illuminate\Support\Collection
     */
     public function collection()
     {
-        return ModelsTransaksi::all();
+        return ModelsUser::all();
     }
 }

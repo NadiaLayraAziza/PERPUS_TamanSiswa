@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Exports\BukuExport;
+use App\Exports\TransaksiExport;
 use App\Models\Anggota;
 use App\Models\Buku;
 use App\Models\Transaksi;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use PDF;
@@ -103,7 +105,7 @@ class LaporanController extends Controller
         return view('Baru.Admin.Laporan.buku');
     }
 
-    public function anggotaPDF()
+    public function anggotaPdf()
     {
 
         $datas = Anggota::all();
@@ -208,76 +210,82 @@ class LaporanController extends Controller
 
     public function transaksiExcel(Request $request)
     {
-        $nama = 'laporan_transaksi_'.date('Y-m-d_H-i-s');
-        Excel::create($nama, function ($excel) use ($request) {
-        $excel->sheet('Laporan Data Transaksi', function ($sheet) use ($request) {
+//         $nama = 'laporan_transaksi_'.date('Y-m-d_H-i-s');
+//         Excel::create($nama, function ($excel) use ($request) {
+//         $excel->sheet('Laporan Data Transaksi', function ($sheet) use ($request) {
 
-        $sheet->mergeCells('A1:H1');
+//         $sheet->mergeCells('A1:H1');
 
-       // $sheet->setAllBorders('thin');
-        $sheet->row(1, function ($row) {
-            $row->setFontFamily('Calibri');
-            $row->setFontSize(11);
-            $row->setAlignment('center');
-            $row->setFontWeight('bold');
-        });
+//        // $sheet->setAllBorders('thin');
+//         $sheet->row(1, function ($row) {
+//             $row->setFontFamily('Calibri');
+//             $row->setFontSize(11);
+//             $row->setAlignment('center');
+//             $row->setFontWeight('bold');
+//         });
 
-        $sheet->row(1, array('LAPORAN DATA TRANSAKSI'));
+//         $sheet->row(1, array('LAPORAN DATA TRANSAKSI'));
 
-        $sheet->row(2, function ($row) {
-            $row->setFontFamily('Calibri');
-            $row->setFontSize(11);
-            $row->setFontWeight('bold');
-        });
+//         $sheet->row(2, function ($row) {
+//             $row->setFontFamily('Calibri');
+//             $row->setFontSize(11);
+//             $row->setFontWeight('bold');
+//         });
 
-        $q = Transaksi::query();
+//         $q = Transaksi::query();
 
-        if($request->get('status'))
-        {
-             if($request->get('status') == 'pinjam') {
-                $q->where('status', 'pinjam');
-            } else {
-                $q->where('status', 'kembali');
-            }
-        }
+//         if($request->get('status'))
+//         {
+//              if($request->get('status') == 'pinjam') {
+//                 $q->where('status', 'pinjam');
+//             } else {
+//                 $q->where('status', 'kembali');
+//             }
+//         }
 
-        if(Auth::user()->level == 'user')
-        {
-            $q->where('anggota_id', Auth::user()->anggota->id);
-        }
+//         if(Auth::user()->level == 'user')
+//         {
+//             $q->where('anggota_id', Auth::user()->anggota->id);
+//         }
 
-        $datas = $q->get();
+//         $datas = $q->get();
 
-       // $sheet->appendRow(array_keys($datas[0]));
-        $sheet->row($sheet->getHighestRow(), function ($row) {
-            $row->setFontWeight('bold');
-        });
+//        // $sheet->appendRow(array_keys($datas[0]));
+//         $sheet->row($sheet->getHighestRow(), function ($row) {
+//             $row->setFontWeight('bold');
+//         });
 
-         $datasheet = array();
-         $datasheet[0]  =   array("NO", "KODE TRANSAKSI", "BUKU", "PEMINJAM",  "TGL PINJAM","TGL KEMBALI","STATUS", "KET");
-         $i=1;
+//          $datasheet = array();
+//          $datasheet[0]  =   array("NO", "KODE TRANSAKSI", "BUKU", "PEMINJAM",  "TGL PINJAM","TGL KEMBALI","STATUS", "KET");
+//          $i=1;
 
-        foreach ($datas as $data) {
+//         foreach ($datas as $data) {
 
-           // $sheet->appendrow($data);
-          $datasheet[$i] = array($i,
-                        $data['kode_transaksi'],
-                        $data->buku->judul,
-                        $data->anggota->nama,
-                        date('d/m/y', strtotime($data['tgl_pinjam'])),
-                        date('d/m/y', strtotime($data['tgl_kembali'])),
-                        $data['status'],
-                        $data['ket']
-                    );
+//            // $sheet->appendrow($data);
+//           $datasheet[$i] = array($i,
+//                         $data['kode_transaksi'],
+//                         $data->buku->judul,
+//                         $data->anggota->nama,
+//                         date('d/m/y', strtotime($data['tgl_pinjam'])),
+//                         date('d/m/y', strtotime($data['tgl_kembali'])),
+//                         $data['status'],
+//                         $data['ket']
+//                     );
 
-          $i++;
-        }
+//           $i++;
+//         }
 
-        $sheet->fromArray($datasheet);
-    });
+//         $sheet->fromArray($datasheet);
+//     });
 
-})->export('xls');
-
+// })->export('xls');
+return Excel::download(new TransaksiExport, 'transaksi.xlsx');
 }
-
+    public function userPdf()
+    {
+        $datas = User::all();
+        $pdf = PDF::loadView('Baru.Admin.Laporan.user_pdf', compact('datas'));
+        return $pdf->download('Baru.Admin.Laporan.user_pdf'.date('Y-m-d_H-i-s').'.pdf');
+        // return view('Baru.Admin.Laporan.anggota_pdf', compact('datas'));
+    }
 }

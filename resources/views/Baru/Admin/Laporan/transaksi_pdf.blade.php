@@ -4,116 +4,78 @@
 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<style type="text/css">
-        table {
-border-spacing: 0;
-width: 100%;
+       #table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
 }
-th {
-    background: #fff5f5;
-    background: linear-gradient(#687587, #404853);
-border-left: 1px solid rgba(0, 0, 0, 0.2);
-border-right: 1px solid rgba(255, 255, 255, 0.1);
-color: rgb(0, 0, 0);
-padding: 8px;
-text-align: left;
-text-transform: uppercase;
+#normal{
+  border: 0 solid #dddddd;
+  text-align: left;
+  padding: 0;
 }
-th:first-child {
-border-top-left-radius: 4px;
-border-left: 0;
-}
-th:last-child {
-border-top-right-radius: 4px;
-border-right: 0;
-}
-td {
-border-right: 1px solid #c6c9cc;
-border-bottom: 1px solid #c6c9cc;
-padding: 8px;
-}
-td:first-child {
-border-left: 1px solid #c6c9cc;
-}
-tr:first-child td {
-border-top: 0;
-}
-tr:nth-child(even) td {
-background: #e8eae9;
-}
-tr:last-child td:first-child {
-border-bottom-left-radius: 4px;
-}
-tr:last-child td:last-child {
-border-bottom-right-radius: 4px;
-}
-img {
-    width: 40px;
-    height: 40px;
-    border-radius: 100%;
-}
-.center {
-    text-align: center;
+
+#isi-table {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
 }
 </style>
   <link rel="stylesheet" href="">
 	<title>Laporan Data Transaksi</title>
 </head>
 <body>
-<h1 class="center">LAPORAN DATA TRANSAKSI</h1>
- <table id="pseudo-demo">
-                      <thead>
-                        <tr>
-                          <th>
-                            Kode
-                          </th>
-                          <th>
-                            Buku
-                          </th>
-                          <th>
-                            Peminjam
-                          </th>
-                          <th>
-                            Tgl Pinjam
-                          </th>
-                          <th>
-                            Tgl Kembali
-                          </th>
-                          <th>
-                            Status
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                      @foreach($datas as $data)
-                       <tr>
-                          <td class="py-1">
-                            {{$data->kode_transaksi}}
-                          </td>
-                          <td>
-
-                            {{$data->buku->judul}}
-
-                          </td>
-
-                          <td>
-                            {{$data->anggota->nama}}
-                          </td>
-                          <td>
-                           {{date('d/m/y', strtotime($data->tgl_pinjam))}}
-                          </td>
-                          <td>
-                            {{date('d/m/y', strtotime($data->tgl_kembali))}}
-                          </td>
-                          <td>
-                          @if($data->status == 'pinjam')
-                            <label class="badge badge-warning">Pinjam</label>
-                          @else
-                            <label class="badge badge-success">Kembali</label>
-                          @endif
-                          </td>
-                        </tr>
-                      @endforeach
-                      </tbody>
-                    </table>
+  <table style="width: 100%">
+    <tr>
+      {{-- <td><img src=" {{ asset('images/logo-smk.png') }}" style="width: 150px"></td> --}}
+      <td>
+        <center>
+          <font size="4">PERPUSTAKAAN</font><br>
+          <font size="5"><b>SMK TAMAN SISWA MOJOAGUNNG </b></font><br>
+          <font size="2"></font><br>
+          <font size="2"><i>Jln Cut Nya'Dien No. 02 Kode Pos : 68173 Telp./Fax (0331)758005 Tempurejo Jember Jawa Timur</i></font>
+        </center>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2"><hr></td>
+    </tr>
+  </table>
+ <table id="table">
+  <thead>
+    <tr>
+      <th colspan="7">Laporan Data Peminjaman</th>
+      <th></th>
+    </tr>
+    <tr>
+      <th id="isi-table">Kode</th>
+      <th id="isi-table">Buku</th>
+      <th id="isi-table">Peminjam</th>
+      <th id="isi-table">Tgl Pinjam</th>
+      <th id="isi-table">Tgl Kembali</th>
+      <th id="isi-table">Status </th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach($datas as $data)
+    <tr>
+      <td id="isi-table">
+      {{$data->kode_transaksi}}
+      </td>
+      <td id="isi-table">{{$data->buku->judul}}</td>
+      <td id="isi-table"> {{$data->anggota->nama}}</td>
+      <td id="isi-table">{{date('d/m/y', strtotime($data->tgl_pinjam))}}</td>
+      <td id="isi-table"> {{date('d/m/y', strtotime($data->tgl_kembali))}}</td>
+      <td id="isi-table">
+          @if($data->status == 'pinjam')
+            <label class="badge badge-warning">Pinjam</label>
+          @else
+            <label class="badge badge-success">Kembali</label>
+          @endif
+      </td>
+     </tr>
+    @endforeach
+  </tbody>
+ </table>
 </body>
 </html>

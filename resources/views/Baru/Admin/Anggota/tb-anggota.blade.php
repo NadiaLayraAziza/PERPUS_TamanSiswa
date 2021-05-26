@@ -40,11 +40,6 @@
                                 <a class="dropdown-item" href="{{url('laporan/anggota/excel')}}">Excel</a>
                                 <a class="dropdown-item" href="{{url('laporan/anggota/pdf')}}">PDF</a>
                             </div>
-                            {{-- <button type="button" class="btn btn-light dropdown-toggle waves-effect" data-toggle="dropdown" aria-expanded="false">Import Data <span class="caret"></span> </button>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Dropdown link</a>
-                                <a class="dropdown-item" href="#">Dropdown link</a>
-                            </div> --}}
                         </div>
                     </div>
                 </div>

@@ -32,6 +32,16 @@
                             <i class="icon-copy fa fa-user-plus" aria-hidden="true"></i>
                             Tambah Data
                         </a>
+                        <div class="btn-group dropdown">
+                          <a href="#" type="button" class="btn" data-toggle="dropdown" data-bgcolor="#ffc107" data-color="#ffffff">
+                              <i class="icon-copy fa fa-download" aria-hidden="true"></i>
+                              Download Data
+                          </a>
+                          <div class="dropdown-menu">
+                              <a class="dropdown-item" href="{{url('laporan/user/excel')}}">Excel</a>
+                              <a class="dropdown-item" href="{{url('laporan/user/pdf')}}">PDF</a>
+                          </div>
+                      </div>
                     </div>
                 </div>
             </div>
@@ -50,7 +60,7 @@
 				<table class="data-table table nowrap">
                     <thead>
                         <tr>
-                            <th> Name </th>
+                            <th > Name </th>
                             <th> Username </th>
                             <th> Email </th>
                             <th> Level </th>

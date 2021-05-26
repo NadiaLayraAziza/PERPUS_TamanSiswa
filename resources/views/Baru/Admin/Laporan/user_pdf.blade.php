@@ -97,29 +97,31 @@
  <table id="table">
     <thead>
       <tr>
-        <th colspan="7">Laporan Data Buku</th>
+        <th colspan="7">Laporan Data User Aktif</th>
         <th></th>
       </tr>
       <tr>
-        <th id="isi-table">Judul</th>
-        <th id="isi-table">ISBN</th>
-        <th id="isi-table">Pengarang</th>
-        <th id="isi-table">Penerbit</th>
-        <th id="isi-table">Tahun</th>
-        <th id="isi-table">Stok</th>
-        <th id="isi-table">Rak</th>
+        <th id="isi-table"> Name </th>
+        <th id="isi-table"> Username </th>
+        <th id="isi-table"> Email </th>
+        <th id="isi-table"> Level </th>
+        <th id="isi-table"> Action</th>
       </tr>
     </thead>
     <tbody>
       @foreach($datas as $data)
       <tr>
-        <td id="isi-table">{{$data->judul}}</td>
-        <td id="isi-table">{{$data->isbn}}</td>
-        <td id="isi-table">{{$data->pengarang}}</td>
-        <td id="isi-table">{{$data->penerbit}}</td>
-        <td id="isi-table">{{$data->tahun_terbit}}</td>
-        <td id="isi-table">{{$data->jumlah_buku}}</td>
-        <td id="isi-table">{{$data->lokasi}}</td>
+        <td id="isi-table">
+        @if($data->gambar)
+          <img width="30" height="30" src="{{url('images/user', $data->gambar)}}" alt="image" />
+        @else
+          <img width="30" height="30" src="{{url('images/user/default.png')}}" alt="image" />
+        @endif
+          {{$data->name}}
+        </td>
+        <td id="isi-table">{{$data->username}}</td>
+        <td id="isi-table">{{$data->email}}</td>
+        <td id="isi-table">{{$data->level}}</td>
       </tr>
     @endforeach
     </tbody>
