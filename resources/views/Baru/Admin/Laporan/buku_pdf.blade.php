@@ -4,13 +4,10 @@
 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<style type="text/css">
-		    table {
-    border-spacing: 0;
-    width: 100%;
-    }
-    th {
-        background: #fff5f5;
-        background: linear-gradient(#687587, #404853);
+
+    /* th {
+    background: #fff5f5;
+    background: linear-gradient(#687587, #404853);
     border-left: 1px solid rgba(0, 0, 0, 0.2);
     border-right: 1px solid rgba(255, 255, 255, 0.1);
     color: rgb(0, 0, 0);
@@ -25,6 +22,11 @@
     th:last-child {
     border-top-right-radius: 4px;
     border-right: 0;
+    }
+    #isi-td{
+    border-right: 0px solid #2074c9;
+    border-bottom: 0px solid #1b73cc;
+    padding:0;
     }
     td {
     border-right: 1px solid #c6c9cc;
@@ -45,78 +47,78 @@
     }
     tr:last-child td:last-child {
     border-bottom-right-radius: 4px;
-    }
-    img {
+    } */
+    /* img {
     	width: 40px;
     	height: 40px;
     	border-radius: 100%;
-    }
-    .center {
-    	text-align: center;
-    }
+    } */
+  #table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+#normal{
+  border: 0 solid #dddddd;
+  text-align: left;
+  padding: 0;
+}
+
+#isi-table {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+/* tr:nth-child(even) {
+  background-color: #dddddd;
+} */
 	</style>
   <link rel="stylesheet" href="">
 	<title>Laporan Data Buku</title>
 </head>
 <body>
-<h1 class="center">LAPORAN DATA BUKU</h1>
- <table id="pseudo-demo">
-                      <thead>
-                        <tr>
-                          <th>
-                            Judul
-                          </th>
-                          <th>
-                            ISBN
-                          </th>
-                          <th>
-                            Pengarang
-                          </th>
-                          <th>
-                            Penerbit
-                          </th>
-                          <th>
-                            Tahun
-                          </th>
-                          <th>
-                            Stok
-                          </th>
-                          <th>
-                            Rak
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                      @foreach($datas as $data)
-                        <tr>
-                          <td class="py-1">
-                            {{$data->judul}}
-                          </td>
-                          <td>
-
-                            {{$data->isbn}}
-
-                          </td>
-
-                          <td>
-                            {{$data->pengarang}}
-                          </td>
-                          <td>
-                            {{$data->penerbit}}
-                          </td>
-                          <td>
-                            {{$data->tahun_terbit}}
-                          </td>
-                          <td>
-                            {{$data->jumlah_buku}}
-                          </td>
-                          <td>
-                            {{$data->lokasi}}
-                          </td>
-
-                        </tr>
-                      @endforeach
-                      </tbody>
-                    </table>
+<table style="width: 100%">
+  <tr>
+    {{-- <td><img src=" {{ asset('images/logo-smk.png') }}" style="width: 150px"></td> --}}
+    <td>
+      <center>
+        <font size="4">PERPUSTAKAAN</font><br>
+        <font size="5"><b>SMK TAMAN SISWA MOJOAGUNNG </b></font><br>
+        <font size="2"></font><br>
+        <font size="2"><i>Jln Cut Nya'Dien No. 02 Kode Pos : 68173 Telp./Fax (0331)758005 Tempurejo Jember Jawa Timur</i></font>
+      </center>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><hr></td>
+  </tr>
+</table>
+ <table id="table">
+    <thead>
+      <tr>
+        <th id="isi-table">Judul</th>
+        <th id="isi-table">ISBN</th>
+        <th id="isi-table">Pengarang</th>
+        <th id="isi-table">Penerbit</th>
+        <th id="isi-table">Tahun</th>
+        <th id="isi-table">Stok</th>
+        <th id="isi-table">Rak</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach($datas as $data)
+      <tr>
+        <td id="isi-table">{{$data->judul}}</td>
+        <td id="isi-table">{{$data->isbn}}</td>
+        <td id="isi-table">{{$data->pengarang}}</td>
+        <td id="isi-table">{{$data->penerbit}}</td>
+        <td id="isi-table">{{$data->tahun_terbit}}</td>
+        <td id="isi-table">{{$data->jumlah_buku}}</td>
+        <td id="isi-table">{{$data->lokasi}}</td>
+      </tr>
+    @endforeach
+    </tbody>
+  </table>
 </body>
 </html>
