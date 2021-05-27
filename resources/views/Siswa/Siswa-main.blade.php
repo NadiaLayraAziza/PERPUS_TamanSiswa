@@ -71,6 +71,7 @@
 	{{-- Content --}}
 	@yield('Content')
 	{{-- End Content --}}
+    @include('sweetalert::alert')
 	<!-- js -->
 	<script src="{{ asset('vendors/scripts/core.js')}}"></script>
 	<script src="{{ asset('vendors/scripts/script.min.js')}}"></script>
