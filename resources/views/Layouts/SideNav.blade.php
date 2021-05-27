@@ -1,102 +1,124 @@
-<nav class="pcoded-navbar">
-    <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
-    <div class="pcoded-inner-navbar main-menu">
-        <div class="">
-            <div class="main-menu-header">
-                <img class="img-80 img-radius" src="{{ asset('assets/images/logo-smk.png')}}" style="width: 150px;">
-                {{-- <div class="user-details">
-                    <span id="more-details">SMK Taman Siswa </i></span>
-                    <p style="color: white">Mojoagung</p>
-                </div> --}}
-            </div>
-
+<div class="left-side-bar">
+    <div class="brand-logo" style="padding-left: 40px; padding-top: 7px" >
+        {{--  <a href="index.html">  --}}
+            <img  class="img-80 img-radius" src="{{ asset('vendors/images/logo-smk.png')}}" style="width: 150px;">
+            {{--  class="img-80 img-radius"  --}}
+            {{--  style="width: 150px;"  --}}
+            {{--  <img src="{{ asset('vendors/images/deskapp-logo.svg')}}" alt="" class="dark-logo">
+            <img src="{{ asset('vendors/images/deskapp-logo-white.svg')}}" alt="" class="light-logo">  --}}
+        {{--  </a>  --}}
+        <div class="close-sidebar" data-toggle="left-sidebar-close">
+            <i class="ion-close-round"></i>
         </div>
-        <div class="p-15 p-b-0">
-            <form class="form-material">
-
-        <div class="pcoded-navigation-label">Halaman Admin</div>
-        @if(Auth::user()->level == 'admin')
-        <ul class="pcoded-item pcoded-left-item">
-            <li class="">
-                {{--  nav-item {{ (['/', 'home']) }}  --}}
-                <a href="{{url('/')}}" class="waves-effect waves-dark">
-                    <span class="pcoded-micon"><i class="ti-home"></i><b>C</b></span>
-                    <span class="pcoded-mtext">Dashboard</span>
-                    <span class="pcoded-mcaret"></span>
-                </a>
-            </li>
-        </ul>
-        <ul class="pcoded-item pcoded-left-item">
-            <li class="">
-                {{--  nav-item {{ (['anggota']) }}  --}}
-                <a href="{{url('anggota')}}" class="waves-effect waves-dark">
-                    <span class="pcoded-micon"><i class="ti-user"></i><b>C</b></span>
-                    <span class="pcoded-mtext">Data Anggota</span>
-                    <span class="pcoded-mcaret"></span>
-                </a>
-            </li>
-        </ul>
-        <ul class="pcoded-item pcoded-left-item">
-            <li class="">
-                {{--  nav-item {{ (['buku']) }}  --}}
-                <a href="{{url('buku')}}" class="waves-effect waves-dark">
-                    <span class="pcoded-micon"><i class="ti-book"></i><b>M</b></span>
-                    <span class="pcoded-mtext">Data Buku</span>
-                    <span class="pcoded-mcaret"></span>
-                </a>
-            </li>
-        </ul>
-        @endif
-        <ul class="pcoded-item pcoded-left-item">
-            <li class="">
-                {{--  nav-item {{ (['transaksi']) }}  --}}
-                <a href="{{url('transaksi')}}" class="waves-effect waves-dark">
-                    <span class="pcoded-micon"><i class="ti-receipt"></i><b>M</b></span>
-                    <span class="pcoded-mtext">Data Peminjaman</span>
-                    <span class="pcoded-mcaret"></span>
-                </a>
-            </li>
-        </ul>
-        <ul class="pcoded-item pcoded-left-item">
-            <li class="">
-                {{--  nav-item {{ (['anggota']) }}  --}}
-                <a href="{{url('user')}}" class="waves-effect waves-dark">
-                    <span class="pcoded-micon"><i class="ti-user"></i><b>C</b></span>
-                    <span class="pcoded-mtext">Data User</span>
-                    <span class="pcoded-mcaret"></span>
-                </a>
-            </li>
-        </ul>
-        <ul class="pcoded-item pcoded-left-item">
-            <li class="pcoded-hasmenu ">
-                <a href="#ui-laporan" class="waves-effect waves-dark">
-                    <span class="pcoded-micon"><i class="ti-receipt"></i><b>A</b></span>
-                    <span class="pcoded-mtext">Laporan</span>
-                    <span class="pcoded-mcaret"></span>
-                </a>
-                <ul class="pcoded-submenu">
-                    <li class="">
-                        <a  href="{{url('laporan/trs')}}" class="waves-effect waves-dark">
-                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext">Laporan Transaksi</span>
-                            <span class="pcoded-mcaret"></span>
-                        </a>
-                    </li>
-                    <li class="">
-                        <a href="{{url('laporan/buku')}}" class="waves-effect waves-dark">
-                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext">Laporan Buku</span>
-                            <span class="pcoded-mcaret"></span>
-                        </a>
-                    </li>
-                    {{--  <li class="">
-                        <a href="sample-page.html" class="waves-effect waves-dark">
-                            <span class="pcoded-micon"><i class="ti-layout-sidebar-left"></i><b>S</b></span>
-                            <span class="pcoded-mtext">Sample Page</span>
-                            <span class="pcoded-mcaret"></span>
-                        </a>
-                    </li>  --}}
-                </ul>
-            </li>
-        </ul>
-</nav>
+    </div>
+    <div class="menu-block customscroll">
+        <div class="sidebar-menu">
+            <ul id="accordion-menu">
+                <li>
+                    <div class="dropdown-divider"></div>
+                </li>
+                <li>
+                    <a href="{{url('/')}}" class="dropdown-toggle no-arrow">
+                        <span class="micon dw dw-house-1"></span><span class="mtext">Home</span>
+                    </a>
+                </li>
+                @if(Auth::user()->level != 'user')
+                <li>
+                    <div class="dropdown-divider"></div>
+                </li>
+                <li>
+                    <a href="{{url('user')}}" class="dropdown-toggle no-arrow">
+                        <span class="micon dw dw-user-1"></span><span class="mtext">Data User</span>
+                    </a>
+                </li>
+                <li>
+                    <div class="dropdown-divider"></div>
+                </li>
+                <li>
+                    <a href="{{url('/buku')}}" class="dropdown-toggle no-arrow">
+                        <span class="micon dw dw-book-1"></span><span class="mtext">Data Buku</span>
+                    </a>
+                </li>
+                @endif
+                @if(Auth::user()->level == 'user')
+                <li>
+                    <div class="dropdown-divider"></div>
+                </li>
+                <li>
+                    <a href="{{url('/katalog')}}" class="dropdown-toggle no-arrow">
+                        <span class="micon dw dw-book-1"></span><span class="mtext">Katalog</span>
+                    </a>
+                </li>
+                @endif
+                {{--  <li>
+                    <div class="dropdown-divider"></div>
+                </li>
+                <li>
+                    <a href="{{url('/buku')}}" class="dropdown-toggle no-arrow">
+                        <span class="micon dw dw-book-1"></span><span class="mtext">Katalog Buku</span>
+                    </a>
+                </li>  --}}
+                <li>
+                    <div class="dropdown-divider"></div>
+                </li>
+                @if(Auth::user()->level != 'user')
+                <li>
+                    <a href="{{url('/anggota')}}" class="dropdown-toggle no-arrow">
+                        <span class="micon dw dw-user-2"></span><span class="mtext">Data Anggota</span>
+                    </a>
+                </li>
+                <li>
+                    <div class="dropdown-divider"></div>
+                </li>
+                @endif
+                <li>
+                    <a href="{{url('/transaksi')}}" class="dropdown-toggle no-arrow">
+                        @if(Auth::user()->level == 'user')
+                        <span class="micon dw dw-edit"></span><span class="mtext">Riwayat Peminjaman</span>
+                        @else
+                        <span class="micon dw dw-edit"></span><span class="mtext">Data Peminjaman</span>
+                        @endif
+                    </a>
+                </li>
+                <li>
+                    <div class="dropdown-divider"></div>
+                </li>
+                {{-- @if(Auth::user()->level != 'user')
+                <li>
+                    <a href="{{url('/laporan')}}" class="dropdown-toggle no-arrow">
+                        <span class="micon dw dw-server"></span><span class="mtext">Laporan</span>
+                    </a>
+                </li>
+                <li>
+                    <div class="dropdown-divider"></div>
+                </li>
+                @endif --}}
+                {{--  <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle">
+                        <span class="micon dw dw-edit2"></span><span class="mtext">Siswa</span>
+                    </a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="#" class="dropdown-toggle no-arrow">
+                                <span class="micon dw dw-user-13" style="padding-left: 220px"></span>
+                                <span class="mtext">Profile</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle no-arrow">
+                                <span class="micon dw dw-book-1" style="padding-left: 220px"></span>
+                                <span class="mtext">Katalog</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle no-arrow">
+                                <span class="micon dw dw-user-2" style="padding-left: 220px"></span>
+                                <span class="mtext">Riwayat</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>  --}}
+            </ul>
+        </div>
+    </div>
+</div>

@@ -8,7 +8,7 @@
 } );
 </script>
 @stop
-@extends('Baru.Admin.Admin-main')
+@extends('Admin.Admin-main')
 @section('Content')
 
 <div class="main-container">
@@ -18,7 +18,7 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="title">
-                            <h4>Data Seluruh Usur</h4>
+                            <h4>Data Seluruh User</h4>
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
@@ -133,7 +133,7 @@
                 </div>
             </div>
             {{-- Footer --}}
-            @include('Baru.Layouts.footer')
+            @include('Layouts.footer')
             {{-- End Footer --}}
         </div>
     </div>

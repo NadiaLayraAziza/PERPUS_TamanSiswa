@@ -36,7 +36,7 @@ var check = function() {
     </script>
 @stop
 
-@extends('Baru.Admin.Admin-main')
+@extends('Admin.Admin-main')
 @section('Content')
 
 <div class="main-container">
@@ -150,7 +150,7 @@ var check = function() {
         </div>
 
         {{-- Footer --}}
-        @include('Baru.Layouts.footer')
+        @include('Layouts.footer')
         {{-- End Footer --}}
 
     </div>

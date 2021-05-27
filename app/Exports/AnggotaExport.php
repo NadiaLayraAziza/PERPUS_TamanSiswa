@@ -3,6 +3,7 @@
 namespace App\Exports;
 
 use App\Anggota;
+use App\Models\Anggota as ModelsAnggota;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
 class AnggotaExport implements FromCollection
@@ -12,6 +13,6 @@ class AnggotaExport implements FromCollection
     */
     public function collection()
     {
-        return Anggota::all();
+        return ModelsAnggota::all();
     }
 }

@@ -30,7 +30,7 @@ class BukuController extends Controller
         // }
 
         $datas = Buku::paginate(10);
-        return view('Baru.Admin.Buku.tb-buku', compact('datas'));
+        return view('Admin.Buku.tb-buku', compact('datas'));
     }
 
     /**
@@ -45,7 +45,7 @@ class BukuController extends Controller
             return redirect()->to('/');
         }
 
-        return view('Baru.Admin.Buku.create');
+        return view('Admin.Buku.create');
     }
 
     /**
@@ -98,14 +98,9 @@ class BukuController extends Controller
      */
     public function show($id)
     {
-        // if(Auth::user()->level == 'user') {
-        //         Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
-        //         return redirect()->to('/');
-        // }
-
         $data = Buku::findOrFail($id);
 
-        return view('Baru.Admin.Buku.show', compact('data'));
+        return view('Admin.Buku.show', compact('data'));
     }
 
     /**
@@ -122,7 +117,7 @@ class BukuController extends Controller
         }
 
         $data = Buku::findOrFail($id);
-        return view('Baru.Admin.Buku.edit', compact('data'));
+        return view('Admin.Buku.edit', compact('data'));
     }
 
     /**
@@ -226,7 +221,7 @@ class BukuController extends Controller
 
     public function kata(){
         $datas = Buku::get();
-        return view('Baru.Siswa.katalog', compact('datas'));
+        return view('Siswa.katalog', compact('datas'));
 
 
     }
@@ -247,7 +242,7 @@ class BukuController extends Controller
             //fungsi eloquent menampilkan data menggunakan pagination
             $datas= Buku::paginate(5); // Pagination menampilkan 5 data
         }
-        return view('Baru.Siswa.katalog',compact('datas'))->with('i',(request()->input('datas',1)-1)*5);
+        return view('Siswa.katalog',compact('datas'))->with('i',(request()->input('datas',1)-1)*5);
     }
 
 

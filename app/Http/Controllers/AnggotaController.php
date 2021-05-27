@@ -32,7 +32,7 @@ class AnggotaController extends Controller
 
         $datas = Anggota::paginate(10);
         // return view('anggota.index', compact('datas'));
-        return view('Baru.Admin.Anggota.tb-anggota', compact('datas'));
+        return view('Admin.Anggota.tb-anggota', compact('datas'));
     }
 
     /**
@@ -52,7 +52,7 @@ class AnggotaController extends Controller
                         ->from('anggota')
                         ->whereRaw('anggota.user_id = users.id');
                      })->get();
-        return view('Baru.Admin.Anggota.create', compact('users'));
+        return view('Admin.Anggota.create', compact('users'));
     }
 
     /**
@@ -99,7 +99,7 @@ class AnggotaController extends Controller
 
         $data = Anggota::findOrFail($id);
 
-        return view('Baru.Admin.Anggota.show', compact('data'));
+        return view('Admin.Anggota.show', compact('data'));
     }
 
     /**
@@ -117,7 +117,7 @@ class AnggotaController extends Controller
 
         $data = Anggota::findOrFail($id);
         $users = User::get();
-        return view('Baru.Admin.Anggota.edit', compact('data', 'users'));
+        return view('Admin.Anggota.edit', compact('data', 'users'));
     }
 
     /**

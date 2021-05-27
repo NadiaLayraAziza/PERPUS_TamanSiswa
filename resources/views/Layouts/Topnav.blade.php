@@ -1,68 +1,52 @@
-<nav class="navbar header-navbar pcoded-header">
-    <div class="navbar-wrapper">
-        <div class="navbar-logo">
-            <a class="mobile-menu waves-effect waves-light" id="mobile-collapse" href="#!">
-                <i class="ti-menu"></i>
-            </a>
-            <div class="mobile-search waves-effect waves-light">
-                <div class="header-search">
-                    <div class="main-search morphsearch-search">
-                        <div class="input-group">
-                            <span class="input-group-prepend search-close"><i class="ti-close input-group-text"></i></span>
-                            <input type="text" class="form-control" placeholder="Enter Keyword">
-                            <span class="input-group-append search-btn"><i class="ti-search input-group-text"></i></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <a href="index.html">
-                <img class="img-fluid" src="{{ asset('assets/images/logo.png')}}" alt="Theme-Logo" />
-            </a>
-            <a class="mobile-options waves-effect waves-light">
-                <i class="ti-more"></i>
-            </a>
-        </div>
-        <div class="navbar-container container-fluid">
-            <ul class="nav-left">
-                <li>
-                    <div class="sidebar_toggle"><a href="javascript:void(0)"><i class="ti-menu"></i></a></div>
-                </li>
-                <li>
-                    <a href="#!" onclick="javascript:toggleFullScreen()" class="waves-effect waves-light">
-                        <i class="ti-fullscreen"></i>
-                    </a>
-                </li>
-            </ul>
-            <ul class="nav-right">
+<div class="header">
+    <div class="header-left">
+        <div class="menu-icon dw dw-menu"></div>
+        <div class="search-toggle-icon dw dw-search2" data-toggle="header_search"></div>
+        <div class="header-search">
 
-                <li class="user-profile header-notification">
-                    <a href="#!" class="waves-effect waves-light">
-                        <span class="profile-text">Hello, {{Auth::user()->name}} !</span>
+        </div>
+    </div>
+    <div class="header-right">
+        <div class="dashboard-setting user-notification">
+            <div class="dropdown">
+                <a class="dropdown-toggle no-arrow" href="javascript:;" data-toggle="right-sidebar">
+                    <i class="dw dw-settings2"></i>
+                </a>
+            </div>
+        </div>
+
+
+        <div class="user-info-dropdown">
+            <div class="dropdown">
+                <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                    <span class="user-icon">
                         @if(Auth::user()->gambar == '')
                         <img class="img-radius" src="{{asset('images/user/default.png')}}" alt="User-Profile-Image">
                         @else
                         <img class="img-radius" src="{{asset('images/user/'.Auth::user()->gambar)}}" alt="User-Profile-Image">
                         @endif
-                        <i class="ti-angle-down"></i>
+                        {{--  <img src="{{ asset('vendors/images/photo1.jpg')}}" alt="">  --}}
+                    </span>
+                    <span class="profile-text">Hello, {{Auth::user()->name}} !</span>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                    <a class="dropdown-item" href="{{route('user.show', Auth::user()->id)}}"><i class="dw dw-user1"></i> Profile</a>
+                    <a class="dropdown-item" href="{{route('user.edit', Auth::user()->id)}}"><i class="dw dw-settings2"></i> Setting</a>
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();"><i class="dw dw-logout"></i>
+                        {{ __('Logout') }}
                     </a>
-                    <ul class="show-notification profile-notification">
-                        <li class="waves-effect waves-light">
-                            <a href="{{route('user.edit', Auth::user()->id)}}">
-                                <i class="ti-settings"></i> Settings Profile
-                            </a>
-                        </li>
-                        <li class="waves-effect waves-light">
-                            <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();">
-                                <i class="ti-layout-sidebar-left"></i> Logout
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </div>
+            </div>
         </div>
+
+        {{-- <div class="github-link">
+            <a href="https://github.com/dropways/deskapp" target="_blank"><img src="{{ asset('vendors/images/github.svg')}}" alt=""></a>
+        </div> --}}
     </div>
-</nav>
+</div>
