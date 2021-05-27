@@ -89,7 +89,7 @@
                                 {{$data->nama}}
                             </td> --}}
                             <td> {{$data->nisn}} </td>
-                            <td> {{$data->name}}</td>
+                            <td> {{$data->nama}}</td>
 
                             <td>
                                 @if($data->jurusan == 'TI')

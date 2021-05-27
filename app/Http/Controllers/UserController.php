@@ -1,8 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\Anggota;
 use App\Models\Buku;
 use App\Models\Siswa;
 use App\Models\Transaksi;
@@ -37,25 +35,14 @@ class UserController extends Controller
             Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
             return redirect()->to('/');
         }
-
-
-        $getRow = User::orderBy('id', 'DESC')->get();
-
-        $rowCount = $getRow->count();
-
-        $lastId = $getRow->first();
-
-        $kode = $lastId->id+1;
-
-        return view('auth.register', compact('kode'));
-
+        return view('auth.register');
     }
 
     public function store(Request $request)
     {
-        $count_user = User::where('username',$request->input('username'))->count();
-        // $count_anggota = Anggota::where('nisn',$request->input('nisn'))->count();
-        if($count_user>0){
+        $count = User::where('username',$request->input('username'))->count();
+
+        if($count>0){
             Session::flash('message', 'Already exist!');
             Session::flash('message_type', 'danger');
             return redirect()->to('user');
@@ -66,12 +53,8 @@ class UserController extends Controller
             'username' => 'required|string|max:20|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-
-            // Anggota
-            'nisn' => 'required|string|max:20|unique:anggota',
-            'tempat_lahir' => 'required|string|max:255',
-
         ]);
+
 
         if($request->file('gambar') == '') {
             $gambar = NULL;
@@ -92,23 +75,11 @@ class UserController extends Controller
             'password' => bcrypt(($request->input('password'))),
             'gambar' => $gambar
         ]);
-        
-        Anggota::create([
-            'user_id' => $request->input('user_id'),
-            'name' => $request->input('name'),
-            'nisn' => $request->input('nisn'),
-            'tempat_lahir' => $request->input('tempat_lahir'),
-            'tgl_lahir' => $request->input('tgl_lahir'),
-            // 'jk' => $request->input('jk'),
-            'jurusan' => $request->input('jurusan')
-        ]);
 
         Session::flash('message', 'Berhasil ditambahkan!');
         Session::flash('message_type', 'success');
-
-        //return
         return redirect()->route('user.index');
-        //return $request->all();
+
     }
 
     public function show($id)

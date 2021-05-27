@@ -68,17 +68,6 @@ var check = function() {
             <div class="card-box pd-20 height-100-p mb-30">
                 <form method="POST" action="{{ route('user.store') }}" enctype="multipart/form-data" id="myForm">
                     @csrf
-                    <div class="form-group row{{ $errors->has('kode_transaksi') ? ' has-error' : '' }}">
-                        <label for="kode_transaksi" class="col-sm-2 col-form-label">User ID</label>
-                        <div class="col-sm-10">
-                            <input id="user_id" type="text" class="form-control" name="user_id" value="{{ $kode }}" required readonly="">
-                            @if ($errors->has('kode_transaksi'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('kode_transaksi') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                    </div>
                     <div class="form-group row{{ $errors->has('name') ? ' has-error' : '' }}">
                         <label for="name" class="col-sm-2 col-form-label">name</label>
                         <div class="col-sm-10">
@@ -110,50 +99,6 @@ var check = function() {
                                     <strong>{{ $errors->first('email') }}</strong>
                                 </span>
                             @endif
-                        </div>
-                    </div>
-                    <div class="form-group row{{ $errors->has('nisn') ? ' has-error' : '' }}">
-                        <label for="nisn" class="col-sm-2 col-form-label">NISN</label>
-                        <div class="col-sm-10">
-                            <input id="nisn" type="number" class="form-control" name="nisn" value="{{ old('nisn') }}" maxlength="8" required>
-                            @if ($errors->has('nisn'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('nisn') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="form-group row{{ $errors->has('tempat_lahir') ? ' has-error' : '' }}">
-                        <label for="tempat_lahir" class="col-sm-2 col-form-label">Tempat Lahir</label>
-                        <div class="col-sm-10">
-                            <input id="tempat_lahir" type="text" class="form-control" name="tempat_lahir" value="{{ old('tempat_lahir') }}" required>
-                            @if ($errors->has('tempat_lahir'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('tempat_lahir') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="form-group row{{ $errors->has('tgl_lahir') ? ' has-error' : '' }}">
-                        <label for="tgl_lahir" class="col-sm-2 col-form-label">Tanggal Lahir</label>
-                        <div class="col-sm-10">
-                            <input id="tgl_lahir" type="date" class="form-control" name="tgl_lahir" value="{{ old('tgl_lahir') }}" required>
-                            @if ($errors->has('tgl_lahir'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('tgl_lahir') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="form-group row{{ $errors->has('jurusan') ? ' has-error' : '' }}">
-                        <label for="jurusan" class="col-sm-2 col-form-label" >Jurusan</label>
-                        <div class="col-sm-10">
-                            <select class="form-control" name="jurusan" required="">
-                                <option value=""></option>
-                                <option value="TI">Teknik Informatika</option>
-                                <option value="SI">Sistem Informasi</option>
-                                <option value="KM">Kesehatan Masyarakat</option>
-                            </select>
                         </div>
                     </div>
                     <div class="form-group row">
