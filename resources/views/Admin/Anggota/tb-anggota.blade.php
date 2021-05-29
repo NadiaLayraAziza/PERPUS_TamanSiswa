@@ -66,31 +66,14 @@
                             {{--  <th>Jurusan</th>  --}}
                             <th>Tempat Lahir</th>
                             <th class="datatable-nosort">Action</th>
-
-                            {{-- <th class="table-plus datatable-nosort">Product</th>
-                            <th>Name</th>
-                            <th>Color</th>
-                            <th>Size</th>
-                            <th>Price</th>
-                            <th>Oty</th>
-                            <th class="datatable-nosort">Action</th> --}}
                         </tr>
                     </thead>
                     <tbody id="myTable">
                         @foreach ($datas as $data)
 
                         <tr>
-                            {{-- <td>
-                                @if($data->user->gambar)
-                                  <img width="30" height="30" class="img-radius" src="{{url('images/user', $data->user->gambar)}}" alt="image"  />
-                                @else
-                                  <img width="30" height="30" class="img-radius" src="{{url('images/user/default.png')}}" alt="image"  />
-                                @endif
-                                {{$data->nama}}
-                            </td> --}}
                             <td> {{$data->nisn}} </td>
-                            <td> {{$data->nama}}</td>
-
+                            <td> {{$data->nama}} </td>
                             <td>
                                 @if($data->jurusan == 'TI')
                                     Teknik Informatika

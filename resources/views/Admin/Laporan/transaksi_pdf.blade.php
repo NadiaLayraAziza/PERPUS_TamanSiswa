@@ -54,6 +54,7 @@
       <th id="isi-table">Tgl Pinjam</th>
       <th id="isi-table">Tgl Kembali</th>
       <th id="isi-table">Status </th>
+      <th id="isi-table">Denda </th>
     </tr>
   </thead>
   <tbody>
@@ -73,6 +74,23 @@
             <label class="badge badge-success">Kembali</label>
           @endif
       </td>
+      <td id="isi-table">
+        <?php
+            $datetime2 = strtotime($data->tgl_kembali) ;
+            $datenow = strtotime(date("Y-m-d"));
+            $durasi = ($datetime2 - $datenow) / 86400 ;
+        ?>
+        @if($data->status == 'pinjam')
+            @if ($durasi < 0)
+            <?php $denda = abs($durasi) * 1000 ; ?>
+            {{ $denda }}
+            @else
+                0
+            @endif
+        @else
+        0
+        @endif
+    </td>
      </tr>
     @endforeach
   </tbody>

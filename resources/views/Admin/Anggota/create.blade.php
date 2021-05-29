@@ -98,9 +98,8 @@
                         <div class="col-sm-10">
                             <select class="form-control" name="jurusan" required="">
                                 <option value=""></option>
-                                <option value="TI">Teknik Informatika</option>
-                                <option value="SI">Sistem Informasi</option>
-                                <option value="KM">Kesehatan Masyarakat</option>
+                                <option value="TKJ">Teknik Komputer Jaringan</option>
+                                <option value="TKR">Teknik Kendaraan Ringan</option>
                             </select>
                         </div>
                     </div>

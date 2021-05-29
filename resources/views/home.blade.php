@@ -13,6 +13,24 @@
 <div class="main-container">
     <div class="pd-ltr-20">
         <div class="row">
+            @if (Auth::user()->level == 'user')
+            <div class="col-xl-3 mb-30">
+                <div class="card-box height-100-p widget-style1">
+                    <div class="d-flex flex-wrap align-items-center">
+                        <div class="progress-data" style="padding-left: 10px">
+                            <i class="fa fa-edit fa-4x"></i>
+                        </div>
+                        <div class="widget-data">
+                            <div class="weight-600 font-18">Transaksi</div>
+                            <div class="h3 mb-0">{{$transaksi->where('anggota_id', Auth::user()->anggota->id)->count()}}</div>
+                        </div>
+                        <p class="text-muted mt-3 mb-0">
+                            <i class="fa fa-edit" aria-hidden="true"></i> Total seluruh transaksi
+                        </p>
+                    </div>
+                </div>
+            </div>
+            @else
             <div class="col-xl-3 mb-30">
                 <div class="card-box height-100-p widget-style1">
                     <div class="d-flex flex-wrap align-items-center">
@@ -29,6 +47,7 @@
                     </div>
                 </div>
             </div>
+            @endif
             <div class="col-xl-3 mb-30">
                 <div class="card-box height-100-p widget-style1">
                     <div class="d-flex flex-wrap align-items-center">
@@ -37,7 +56,7 @@
                         </div>
                         <div class="widget-data">
                             <div class="weight-600 font-18">Admin</div>
-                            <div class="h3 mb-0">{{$user->where('level', 'admin')->count()}}</div>
+                            <div class="h3 mb-0">{{($user->where('level', 'admin')->count()) + ($user->where('level', 'admin')->count())}}</div>
                         </div>
                         <p class="text-muted mt-3 mb-0">
                             <i class="icon-copy dw dw-id-card2" aria-hidden="true"></i> Total Seluruh Admin

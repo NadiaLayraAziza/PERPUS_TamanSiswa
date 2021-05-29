@@ -24,9 +24,16 @@ class UserController extends Controller
             Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
             return redirect()->to('/');
         }
-
-        $datas = User::paginate(10);
-        return view('auth.user', compact('datas'));
+        elseif(Auth::user()->level == 'super_admin')
+        {
+            $datas = User::where('level','!=', 'user')
+                    ->paginate(10);
+            return view('auth.user', compact('datas'));
+        } else {
+            $datas = User::where('level', 'user')
+                    ->paginate(10);
+            return view('auth.user', compact('datas'));
+        }
     }
 
     public function create()

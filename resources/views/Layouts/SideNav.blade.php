@@ -28,7 +28,20 @@
                 </li>
                 <li>
                     <a href="{{url('user')}}" class="dropdown-toggle no-arrow">
+                        @if(Auth::user()->level == 'admin')
                         <span class="micon dw dw-user-1"></span><span class="mtext">Data User</span>
+                        @endif
+                        @if(Auth::user()->level == 'super_admin')
+                        <span class="micon dw dw-user-1"></span><span class="mtext">Data Admin</span>
+                        @endif
+                    </a>
+                </li>
+                <li>
+                    <div class="dropdown-divider"></div>
+                </li>
+                <li>
+                    <a href="{{url('/anggota')}}" class="dropdown-toggle no-arrow">
+                        <span class="micon dw dw-user-2"></span><span class="mtext">Data Anggota</span>
                     </a>
                 </li>
                 <li>
@@ -50,27 +63,9 @@
                     </a>
                 </li>
                 @endif
-                {{--  <li>
-                    <div class="dropdown-divider"></div>
-                </li>
-                <li>
-                    <a href="{{url('/buku')}}" class="dropdown-toggle no-arrow">
-                        <span class="micon dw dw-book-1"></span><span class="mtext">Katalog Buku</span>
-                    </a>
-                </li>  --}}
                 <li>
                     <div class="dropdown-divider"></div>
                 </li>
-                @if(Auth::user()->level != 'user')
-                <li>
-                    <a href="{{url('/anggota')}}" class="dropdown-toggle no-arrow">
-                        <span class="micon dw dw-user-2"></span><span class="mtext">Data Anggota</span>
-                    </a>
-                </li>
-                <li>
-                    <div class="dropdown-divider"></div>
-                </li>
-                @endif
                 <li>
                     <a href="{{url('/transaksi')}}" class="dropdown-toggle no-arrow">
                         @if(Auth::user()->level == 'user')
@@ -83,41 +78,6 @@
                 <li>
                     <div class="dropdown-divider"></div>
                 </li>
-                {{-- @if(Auth::user()->level != 'user')
-                <li>
-                    <a href="{{url('/laporan')}}" class="dropdown-toggle no-arrow">
-                        <span class="micon dw dw-server"></span><span class="mtext">Laporan</span>
-                    </a>
-                </li>
-                <li>
-                    <div class="dropdown-divider"></div>
-                </li>
-                @endif --}}
-                {{--  <li class="dropdown">
-                    <a href="javascript:;" class="dropdown-toggle">
-                        <span class="micon dw dw-edit2"></span><span class="mtext">Siswa</span>
-                    </a>
-                    <ul class="submenu">
-                        <li>
-                            <a href="#" class="dropdown-toggle no-arrow">
-                                <span class="micon dw dw-user-13" style="padding-left: 220px"></span>
-                                <span class="mtext">Profile</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="dropdown-toggle no-arrow">
-                                <span class="micon dw dw-book-1" style="padding-left: 220px"></span>
-                                <span class="mtext">Katalog</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="dropdown-toggle no-arrow">
-                                <span class="micon dw dw-user-2" style="padding-left: 220px"></span>
-                                <span class="mtext">Riwayat</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>  --}}
             </ul>
         </div>
     </div>

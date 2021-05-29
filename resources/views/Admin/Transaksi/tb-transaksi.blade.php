@@ -44,11 +44,6 @@
                                         <a class="dropdown-item" href="{{ url('laporan/trs/excel') }}">Excel</a>
                                         <a class="dropdown-item" href="{{ url('laporan/trs/pdf') }}">PDF</a>
                                     </div>
-                                    {{-- <button type="button" class="btn btn-light dropdown-toggle waves-effect" data-toggle="dropdown" aria-expanded="false">Import Data <span class="caret"></span> </button>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Dropdown link</a>
-                                <a class="dropdown-item" href="#">Dropdown link</a>
-                            </div> --}}
                                 </div>
                             </div>
                         @endif
@@ -70,8 +65,8 @@
                                 <th>Tgl Pinjam</th>
                                 <th>Tgl Kembali</th>
                                 <th>Status</th>
-                                {{-- <th>Durasi</th>
-                            <th>Denda</th> --}}
+                                {{-- <th>Durasi</th> --}}
+                                <th>Denda</th>
                                 @if (Auth::user()->level != 'user')
                                 <th>Action</th>
                                 @endif
@@ -89,6 +84,23 @@
                                         <label class="badge badge-warning">Pinjam</label>
                                         @else
                                         <label class="badge badge-success">Kembali</label>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <?php
+                                            $datetime2 = strtotime($data->tgl_kembali) ;
+                                            $datenow = strtotime(date("Y-m-d"));
+                                            $durasi = ($datetime2 - $datenow) / 86400 ;
+                                        ?>
+                                        @if($data->status == 'pinjam')
+                                            @if ($durasi < 0)
+                                            <?php $denda = abs($durasi) * 1000 ; ?>
+                                            {{ $denda }}
+                                            @else
+                                                0
+                                            @endif
+                                        @else
+                                        0
                                         @endif
                                     </td>
                                     @if(Auth::user()->level != 'user')
@@ -115,8 +127,7 @@
                                                 </form>
                                             </div>
                                         </div>
-                                        @else
-                                            @if($data->status == 'pinjam')
+                                            {{-- @if($data->status == 'pinjam')
                                             <form action="{{ route('transaksi.update', $data->id) }}" method="post" enctype="multipart/form-data">
                                             {{ csrf_field() }}
                                             {{ method_field('put') }}
@@ -125,7 +136,7 @@
                                             </form>
                                             @else
                                             -
-                                            @endif
+                                            @endif --}}
                                     </td>
                                     @endif
                                 </tr>

@@ -101,9 +101,11 @@ $(document).ready(function() {
                         <div class="col-sm-10">
                             <select class="form-control" name="jurusan" required="">
                                 <option value=""></option>
-                                <option value="TI" {{$data->jurusan === "TI" ? "selected" : ""}} >Teknik Informatika</option>
+                                <option value="TKJ" {{$data->jurusan === "TKJ" ? "selected" : ""}} >Teknik Komputer Jaringan</option>
+                                <option value="TKR" {{$data->jurusan === "TKR" ? "selected" : ""}} >Teknik Kendaraan Ringan</option>
+                                {{-- <option value="TI" {{$data->jurusan === "TI" ? "selected" : ""}} >Teknik Informatika</option>
                                 <option value="SI" {{$data->jurusan === "SI" ? "selected" : ""}} >Sistem Informasi</option>
-                                <option value="KM" {{$data->jurusan === "KM" ? "selected" : ""}} >Kesehatan Masyarakat</option>
+                                <option value="KM" {{$data->jurusan === "KM" ? "selected" : ""}} >Kesehatan Masyarakat</option> --}}
                             </select>
                         </div>
                     </div>

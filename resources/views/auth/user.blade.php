@@ -101,28 +101,8 @@
                             @method('DELETE')
                             <button onclick="return confirm('Anda yakin ingin meghapus data ini ?')" class="btn btn-danger" >
                                 <i class="icon-copy fa fa-trash" aria-hidden="true"></i>
-                            {{--  </button>
-                                <button onclick="return confirm('Anda yakin ingin meghapus data ini ?')"
-                                type="submit" class="btn btn-danger">Delete</button>  --}}
                             </form>
                         </td>
-                          {{--  <td>
-                            <div class="btn-group dropdown">
-                            <button type="button" class="btn btn-success dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Action
-                          </button>
-                          <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 30px, 0px);">
-                            <a class="dropdown-item" href="{{route('user.edit', $data->id)}}"> Edit </a>
-                            <form action="{{ route('user.destroy', $data->id) }}" class="pull-left"  method="post">
-                            {{ csrf_field() }}
-                            {{ method_field('delete') }}
-                            <button class="dropdown-item" onclick="return confirm('Anda yakin ingin menghapus data ini?')"> Delete
-                            </button>
-                          </form>
-
-                            </div>
-                            </div>
-                          </td>  --}}
                         </tr>
                       @endforeach
                       </tbody>
