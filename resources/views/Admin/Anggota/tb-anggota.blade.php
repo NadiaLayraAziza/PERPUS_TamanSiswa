@@ -79,8 +79,14 @@
                                     Teknik Informatika
                                 @elseif($data->jurusan == 'SI')
                                     Sistem Informasi
+                                @elseif($data->jurusan == 'KM')
+                                    Kesehatan Masyarakat
+                                @elseif($data->jurusan == 'TKJ')
+                                    Teknik Komputer Jaringan
+                                @elseif($data->jurusan == 'TKR')
+                                    Teknik Kendaraan Ringan
                                 @else
-                                  Kesehatan Masyarakat
+                                    -
                                 @endif
                             </td>
                             <td>{{$data->jk === "L" ? "Laki - Laki" : "Perempuan"}}</td>
