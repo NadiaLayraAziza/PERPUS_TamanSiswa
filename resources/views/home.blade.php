@@ -97,11 +97,13 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-
+        <div class="search-icon-box card-box mb-30">
+            <input type="text" class="border-radius-5" id="myInput" placeholder="Search" title="Type in a name"
+                style="background-color:cadetblue">
+            <i class="search_icon dw dw-search"></i>
         </div>
         <div class="card-box mb-30">
-            <h2 class="h4 pd-20">Data Transaksi Sedang Pinjam</h2>
+            <h2 class="h4 pd-20">Data peminjaman yang sedang berlangsung</h2>
             <table class="data-table table nowrap">
                 <thead>
                     <tr>
@@ -117,7 +119,7 @@
                         @endif
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="myTable">
                 @foreach($datas as $data)
                     <tr>
                         <td class="table-plus">
@@ -155,4 +157,15 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+
+</script>
 @endsection
