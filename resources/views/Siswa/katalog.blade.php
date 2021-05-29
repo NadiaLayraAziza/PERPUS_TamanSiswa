@@ -15,14 +15,14 @@
         <div class="min-height-200px">
             <div class="page-header" style="margin-top: 0px">
                 <div class="row">
-                    <div class="col-md-12 col-sm-12">
+                    <div class="col-md-6 col-sm-12">
                         <div class="title">
                             <h4>Katalog Buku</h4>
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{url('/katalog')}}">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page"><a href="{{url('/katalog')}}">Gallery</li>
+                                <li class="breadcrumb-item"><a href="">Data Master</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Katalog</li>
                             </ol>
                         </nav>
                     </div>
@@ -37,7 +37,7 @@
                     </div>
                 </form>
             </div>
-              <div id="filter_list">
+            <div id="filter_list">
                 <div class="gallery-wrap">
 					<ul class="row">
                         @foreach($datas as $data)
@@ -49,7 +49,7 @@
                                     style="max-width: fit-content;padding-left: 70px;">
 									<div class="da-overlay" style="text-align: center">
 										<div class="da-social">
-										<h5 class="color-white pd-20" style="margin-left: -130px">{{$data->judul}}</h5>
+										<h5 class="color-white pd-20" style="margin-left: -50px">{{$data->judul}}</h5>
                                         <form action="{{ route('buku.destroy', $data->id) }}" method="POST">
                                             <ul class="clearfix">
                                                 <li><a href="{{ route('buku.show', $data->id) }}" data-fancybox="images"><i class="fa fa-info-circle"></i></a></li>
@@ -77,13 +77,14 @@
 </div>
 
 <script>
-    $(document).ready(function(){
-      $("#myInput").on("keyup", function() {
-        var value = $(this).val().toLowerCase();
-        $("#myTable tr").filter(function() {
-          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    $(document).ready(function() {
+        $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
         });
-      });
     });
+
 </script>
 @endsection

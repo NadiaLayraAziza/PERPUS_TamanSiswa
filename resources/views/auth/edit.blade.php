@@ -111,32 +111,22 @@ var check = function() {
                             <input type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar">
                         </div>
                     </div>
-                    @if(Auth::user()->level == 'super_admin')
                     <div class="form-group row{{ $errors->has('level') ? ' has-error' : '' }}">
                         <label for="level" class="col-sm-2 col-form-label">Level</label>
                         <div class="col-sm-10">
-                        <select class="form-control" name="level" required="">
-                            <option value="admin" @if($data->level == 'admin') selected @endif>Admin</option>
-                            <option value="super_admin" @if($data->level == 'super_admin') selected @endif>Super Admin</option>
-                        </select>
-                        </div>
-                    </div>
-                    @else
-                    <div class="form-group row{{ $errors->has('level') ? ' has-error' : '' }}">
-                        <label for="level" class="col-sm-2 col-form-label">Level</label>
-                        <div class="col-sm-10">
-                            <input id="level" type="text" class="form-control" name="level" value="user" required readonly="">
+                            <input id="level" type="text" class="form-control" name="level" value="{{ $data->level }}" required readonly="">
                             @if ($errors->has('level'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('level') }}</strong>
                                 </span>
                             @endif
-                            {{--  <select class="form-control" name="level" required readonly="">
-                                <option value="user">User</option>
-                            </select>  --}}
+                        {{-- <select class="form-control" name="level" required readonly="">
+                            <option value="admin" @if($data->level == 'admin') selected @endif>Admin</option>
+                            <option value="super_admin" @if($data->level == 'super_admin') selected @endif>Super Admin</option>
+                            <option value="user" @if($data->level == 'user') selected @endif>User</option>
+                        </select> --}}
                         </div>
                     </div>
-                    @endif
                     <div class="form-group row{{ $errors->has('password') ? ' has-error' : '' }}">
                         <label for="password" class="col-sm-2 col-form-label">Password</label>
                         <div class="col-sm-10">
@@ -158,7 +148,6 @@ var check = function() {
                     <button type="submit" class="btn btn-primary" id="submit">
                                 Update
                     </button>
-                    <a href="{{url('/')}}" class="btn btn-secondary pull-right">Back</a>
             </div>
         </div>
     </div>

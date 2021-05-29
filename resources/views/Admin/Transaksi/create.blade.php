@@ -217,12 +217,18 @@
                                     </td>
                                     <td> {{$data->nisn}} </td>
                                     <td>
-                                    @if($data->prodi == 'TI')
+                                    @if($data->jurusan == 'TI')
                                         Teknik Informatika
-                                    @elseif($data->prodi == 'SI')
+                                    @elseif($data->jurusan == 'SI')
                                         Sistem Informasi
-                                    @else
+                                    @elseif($data->jurusan == 'KM')
                                         Kesehatan Masyarakat
+                                    @elseif($data->jurusan == 'TKJ')
+                                        Teknik Komputer Jaringan
+                                    @elseif($data->jurusan == 'TKR')
+                                        Teknik Kendaraan Ringan
+                                    @else
+                                        -
                                     @endif
                                     </td>
                                     <td> {{$data->jk === "L" ? "Laki - Laki" : "Perempuan"}} </td>

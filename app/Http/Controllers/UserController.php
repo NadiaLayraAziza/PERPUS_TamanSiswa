@@ -85,6 +85,7 @@ class UserController extends Controller
 
         Session::flash('message', 'Berhasil ditambahkan!');
         Session::flash('message_type', 'success');
+        alert()->success('Berhasil.','Data telah ditambahkan!');
         return redirect()->route('user.index');
 
     }
@@ -150,6 +151,7 @@ class UserController extends Controller
 
         Session::flash('message', 'Berhasil diubah!');
         Session::flash('message_type', 'success');
+        alert()->success('Berhasil.','Data telah diubah!');
         return redirect()->to('user');
     }
 
@@ -164,6 +166,7 @@ class UserController extends Controller
             Session::flash('message', 'Akun anda sendiri tidak bisa dihapus!');
             Session::flash('message_type', 'danger');
         }
+        alert()->success('Berhasil.','Data telah dihapus!');
         return redirect()->to('user');
     }
 

@@ -56,7 +56,7 @@ $(document).ready(function() {
                     <div class="form-group row{{ $errors->has('nisn') ? ' has-error' : '' }}">
                         <label for="nisn" class="col-sm-2 col-form-label">NISN</label>
                         <div class="col-sm-10">
-                            <input id="nisn" type="number" class="form-control" name="nisn" value="{{ $data->nisn }}" maxlength="8" required>
+                            <input id="nisn" type="number" class="form-control" name="nisn" value="{{ $data->nisn }}" maxlength="15" required readonly>
                             @if ($errors->has('nisn'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('nisn') }}</strong>

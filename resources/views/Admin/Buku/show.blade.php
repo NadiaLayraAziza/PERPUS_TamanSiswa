@@ -52,10 +52,18 @@ $(document).ready(function() {
                         </nav>
                     </div>
                     <div class="col-md-6 col-sm-12 text-right">
+                        @if (Auth::user()->level != 'user')
                         <a href="{{route('buku.index')}}" type="button" class="btn" data-bgcolor="#3b5998" data-color="#ffffff">
                             <i class="icon-copy fa fa-arrow-left" aria-hidden="true"></i>
                             Kembali
                         </a>
+                        @endif
+                        @if (Auth::user()->level == 'user')
+                        <a href="{{url('/katalog')}}" type="button" class="btn" data-bgcolor="#3b5998" data-color="#ffffff">
+                            <i class="icon-copy fa fa-arrow-left" aria-hidden="true"></i>
+                            Kembali
+                        </a>
+                        @endif
                     </div>
                 </div>
             </div>
